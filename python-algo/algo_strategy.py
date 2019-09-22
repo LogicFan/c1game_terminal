@@ -136,10 +136,13 @@ class AlgoStrategy(gamelib.AlgoCore):
                     {'type': 0, 'location': [21, 10]},
                     {'type': 0, 'location': [7, 9]},
                     {'type': 0, 'location': [20, 9]},
+                    # Encryptor
+                    {'type': 1, 'location': [12, 1]},
+                    {'type': 1, 'location': [15, 1]},
                 ]
             },
             {
-                'priority': 2,
+                'priority': 3,
                 'unit': [
                     # A wall protect destructor
                     {'type': 0, 'location': [4, 13]},
@@ -154,9 +157,36 @@ class AlgoStrategy(gamelib.AlgoCore):
                     {'type': 0, 'location': [19, 9]},
                     {'type': 0, 'location': [8, 8]},
                     {'type': 0, 'location': [19, 8]},
+                    # Protect middle destructor
+                    {'type': 0, 'location': [10, 10]},
+                    {'type': 0, 'location': [17, 10]},
+                ]
+            },
+            {
+                'priority': 4,
+                'unit': [
+                    # Add destructor
+                    {'type': 2, 'location': [10, 5]},
+                    {'type': 2, 'location': [17, 5]},
+                    # A wall extension
+                    {'type': 0, 'location': [9, 8]},
+                    {'type': 0, 'location': [18, 8]},
+                    {'type': 0, 'location': [9, 7]},
+                    {'type': 0, 'location': [10, 7]},
+                    {'type': 0, 'location': [17, 7]},
+                    {'type': 0, 'location': [18, 7]},
+                    {'type': 0, 'location': [10, 6]},
+                    {'type': 0, 'location': [11, 6]},
+                    {'type': 0, 'location': [16, 6]},
+                    {'type': 0, 'location': [17, 6]},
+                    {'type': 0, 'location': [17, 6]},
+                    {'type': 0, 'location': [11, 5]},
+                    {'type': 0, 'location': [16, 5]},
                     # Encryptor
-                    {'type': 1, 'location': [12, 1]},
-                    {'type': 1, 'location': [15, 1]},
+                    {'type': 1, 'location': [12, 2]},
+                    {'type': 1, 'location': [15, 2]},
+                    {'type': 1, 'location': [11, 2]},
+                    {'type': 1, 'location': [16, 2]},
                 ]
             }
         ]
@@ -185,6 +215,12 @@ class AlgoStrategy(gamelib.AlgoCore):
     def attack_strategy(self, game_state):
         """
         """
+        if game_state.attempt_spawn(SCRAMBLER, [13, 0], 1) == 1:
+            logger_print("left SCRAMBLER cleaner")
+        
+        if game_state.attempt_spawn(SCRAMBLER, [14, 0], 1) == 1:
+            logger_print("right SCRAMBLER cleaner")
+
         if game_state.get_resource(game_state.BITS) > 15:
             if game_state.attempt_spawn(EMP, [13, 0], 5) == 5:
                 logger_print("EMP ready to go")
