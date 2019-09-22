@@ -89,104 +89,80 @@ class AlgoStrategy(gamelib.AlgoCore):
             {
                 'priority': 0,
                 'unit': [
-                    # Defense for edge
-                    {'type': 0, 'location': [0, 13]},
-                    {'type': 0, 'location': [1, 13]},
-                    {'type': 0, 'location': [2, 13]},
-                    {'type': 0, 'location': [27, 13]},
-                    {'type': 0, 'location': [26, 13]},
-                    {'type': 0, 'location': [25, 13]},
+                    # Attack tube
+                    {'type': 0, 'location': [13, 1]},
+                    {'type': 0, 'location': [14, 2]},
+                    {'type': 0, 'location': [15, 3]},
+                    {'type': 0, 'location': [16, 4]},
+                    {'type': 0, 'location': [17, 5]},
+                    {'type': 0, 'location': [18, 6]},
+                    {'type': 0, 'location': [19, 7]},
+                    {'type': 0, 'location': [20, 8]},
+                    {'type': 0, 'location': [21, 9]},
+                    {'type': 0, 'location': [22, 10]},
+                    # Encryptor
+                    {'type': 1, 'location': [23, 11]},
+                    {'type': 1, 'location': [23, 12]},
+                    {'type': 1, 'location': [24, 12]},
+                    {'type': 1, 'location': [25, 13]},
                     # Destructor
-                    {'type': 2, 'location': [4, 11]},
-                    {'type': 2, 'location': [10, 11]},
-                    {'type': 2, 'location': [17, 11]},
-                    {'type': 2, 'location': [23, 11]},
+                    {'type': 2, 'location': [23, 13]},
+                    {'type': 2, 'location': [24, 13]},
                     # Protect for destructor
-                    {'type': 0, 'location': [4, 12]},
-                    {'type': 0, 'location': [5, 11]}, # First destructor
-                    {'type': 0, 'location': [9, 11]},
-                    {'type': 0, 'location': [10, 12]},
-                    {'type': 0, 'location': [11, 11]}, # Second
-                    {'type': 0, 'location': [16, 11]},
-                    {'type': 0, 'location': [17, 12]},
-                    {'type': 0, 'location': [18, 11]}, # Third
-                    {'type': 0, 'location': [22, 11]},
-                    {'type': 0, 'location': [23, 12]}, # Fourth
+                    {'type': 0, 'location': [21, 13]},
+                    {'type': 0, 'location': [22, 13]}
                 ]
             },
             {
                 'priority': 1,
                 'unit': [
-                    {'type': 0, 'location': [3, 13]},
-                    {'type': 0, 'location': [24, 13]},
-                    {'type': 2, 'location': [3, 12]},
-                    {'type': 2, 'location': [24, 12]},
-                    {'type': 0, 'location': [1, 12]},
+                    # By 4
                     {'type': 0, 'location': [2, 12]},
-                    {'type': 0, 'location': [25, 12]},
-                    {'type': 0, 'location': [26, 12]},
+                    {'type': 0, 'location': [6, 12]},
+                    {'type': 0, 'location': [10, 12]},
+                    {'type': 0, 'location': [14, 12]},
+                    {'type': 0, 'location': [18, 12]},
+                    {'type': 0, 'location': [21, 12]},
+                    # Edge
+                    {'type': 0, 'location': [0, 13]},
+                    {'type': 0, 'location': [2, 13]},
+                    # Encryptor
+                    {'type': 1, 'location': [22, 12]},
+                    # By 2
+                    {'type': 0, 'location': [4, 12]},
+                    {'type': 0, 'location': [8, 12]},
+                    {'type': 0, 'location': [12, 12]},
+                    {'type': 0, 'location': [16, 12]},
+                    # Destructor
+                    {'type': 2, 'location': [18, 11]},
+                    # Encryptor
+                    {'type': 1, 'location': [22, 11]}
                 ]
             },
             {
                 'priority': 2,
                 'unit': [
-                    {'type': 2, 'location': [7, 8]},
-                    {'type': 2, 'location': [20, 8]},
-                    {'type': 0, 'location': [6, 10]},
-                    {'type': 0, 'location': [21, 10]},
-                    {'type': 0, 'location': [7, 9]},
+                    # Attack tube plus
+                    {'type': 0, 'location': [12, 1]},
+                    {'type': 0, 'location': [13, 2]},
+                    {'type': 0, 'location': [14, 3]},
+                    {'type': 0, 'location': [15, 4]},
+                    {'type': 0, 'location': [16, 5]},
+                    {'type': 0, 'location': [17, 6]},
+                    {'type': 0, 'location': [18, 7]},
+                    {'type': 0, 'location': [19, 8]},
                     {'type': 0, 'location': [20, 9]},
-                    # Encryptor
-                    {'type': 1, 'location': [12, 1]},
-                    {'type': 1, 'location': [15, 1]},
+                    {'type': 0, 'location': [22, 10]}
                 ]
             },
             {
                 'priority': 3,
                 'unit': [
-                    # A wall protect destructor
-                    {'type': 0, 'location': [4, 13]},
-                    {'type': 0, 'location': [23, 13]},
-                    {'type': 0, 'location': [5, 12]},
-                    {'type': 0, 'location': [22, 12]},
-                    {'type': 0, 'location': [6, 11]},
-                    {'type': 0, 'location': [21, 11]},
-                    {'type': 0, 'location': [7, 10]},
-                    {'type': 0, 'location': [20, 10]},
-                    {'type': 0, 'location': [8, 9]},
-                    {'type': 0, 'location': [19, 9]},
-                    {'type': 0, 'location': [8, 8]},
-                    {'type': 0, 'location': [19, 8]},
-                    # Protect middle destructor
-                    {'type': 0, 'location': [10, 10]},
-                    {'type': 0, 'location': [17, 10]},
-                ]
-            },
-            {
-                'priority': 4,
-                'unit': [
-                    # Add destructor
-                    {'type': 2, 'location': [10, 5]},
-                    {'type': 2, 'location': [17, 5]},
-                    # A wall extension
-                    {'type': 0, 'location': [9, 8]},
-                    {'type': 0, 'location': [18, 8]},
-                    {'type': 0, 'location': [9, 7]},
-                    {'type': 0, 'location': [10, 7]},
-                    {'type': 0, 'location': [17, 7]},
-                    {'type': 0, 'location': [18, 7]},
-                    {'type': 0, 'location': [10, 6]},
-                    {'type': 0, 'location': [11, 6]},
-                    {'type': 0, 'location': [16, 6]},
-                    {'type': 0, 'location': [17, 6]},
-                    {'type': 0, 'location': [17, 6]},
-                    {'type': 0, 'location': [11, 5]},
-                    {'type': 0, 'location': [16, 5]},
-                    # Encryptor
-                    {'type': 1, 'location': [12, 2]},
-                    {'type': 1, 'location': [15, 2]},
-                    {'type': 1, 'location': [11, 2]},
-                    {'type': 1, 'location': [16, 2]},
+                    # More destructor
+                    {'type': 2, 'location': [2, 11]},
+                    {'type': 2, 'location': [10, 11]},
+                    {'type': 2, 'location': [6, 11]},
+                    {'type': 2, 'location': [14, 11]}
                 ]
             }
         ]
@@ -215,16 +191,10 @@ class AlgoStrategy(gamelib.AlgoCore):
     def attack_strategy(self, game_state):
         """
         """
-        if game_state.attempt_spawn(SCRAMBLER, [13, 0], 1) == 1:
-            logger_print("left SCRAMBLER cleaner")
-        
-        if game_state.attempt_spawn(SCRAMBLER, [14, 0], 1) == 1:
-            logger_print("right SCRAMBLER cleaner")
-
-        if game_state.get_resource(game_state.BITS) > 15:
-            if game_state.attempt_spawn(EMP, [13, 0], 5) == 5:
-                logger_print("EMP ready to go")
-            
+        if game_state.turn_number % 2 == 1:
+            num = game_state.get_resource(game_state.BITS)
+            game_state.attempt_spawn(PING, [13, 0], int(num // 2))
+            game_state.attempt_spawn(PING, [14, 0], int(num // 2))
 
 
     def starter_strategy(self, game_state):
