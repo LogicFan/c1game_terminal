@@ -19,6 +19,11 @@ Advanced strategy tips:
   the actual current map state.
 """
 
+def logger_print(str):
+    f = open("strategy1.info.log", "a")
+    f.write(str + '\n')
+    f.close()
+
 class AlgoStrategy(gamelib.AlgoCore):
     def __init__(self):
         super().__init__()
@@ -42,8 +47,14 @@ class AlgoStrategy(gamelib.AlgoCore):
         # This is a good place to do initial setup
         self.scored_on_locations = []
 
-    
-        
+    @staticmethod
+    def to_unit_type(num):
+        if num == 0:
+            return FILTER
+        elif num == 1:
+            return ENCRYPTOR
+        elif num == 2:
+            return DESTRUCTOR
 
     def on_turn(self, turn_state):
         """
@@ -57,7 +68,8 @@ class AlgoStrategy(gamelib.AlgoCore):
         gamelib.debug_write('Performing turn {} of your custom algo strategy'.format(game_state.turn_number))
         game_state.suppress_warnings(True)  #Comment or remove this line to enable warnings.
 
-        self.starter_strategy(game_state)
+        self.defense_strategy(game_state)
+        self.attack_strategy(game_state)
 
         game_state.submit_turn()
 
@@ -66,6 +78,55 @@ class AlgoStrategy(gamelib.AlgoCore):
     NOTE: All the methods after this point are part of the sample starter-algo
     strategy and can safely be replaced for your custom algo.
     """
+
+    def defense_strategy(self, game_state):
+        """
+        This function is to place stationary unit. Based on pre-defined defense strategy file.
+        Following the priority from high to low, place unit unitl no core available.
+        """
+
+        strategy_array = [
+            {
+                'priority': 0,
+                'unit': [
+                    {'type': 0, 'location': [13, 0]},
+                    {'type': 0, 'location': [13, 13]},
+                ]
+            },
+            {
+                'priority': 1,
+                'unit': [
+                    {'type': 1, 'location': [13, 5]},
+                    {'type': 1, 'location': [13, 6]},
+                ]
+            }
+        ]
+        
+        logger_print("=======turn " + str(game_state.turn_number) + "=======")
+
+        for priority_level in strategy_array:
+            logger_print("place for priority level " + str(priority_level['priority']))
+            level_failure = 0
+            for unit in priority_level['unit']:
+                logger_print("place unit " + str(unit['type']) + " at location " + str(unit['location']))
+                if game_state.contains_stationary_unit(unit['location']):
+                    logger_print("this location already have unit")
+                else:
+                    spawn_result = game_state.attempt_spawn(self.to_unit_type(unit['type']), unit['location'])
+                    level_failure += 1 - spawn_result
+                    if spawn_result == 0:
+                        logger_print("no enough resource") 
+                    else:
+                        logger_print("success")
+            
+            if level_failure > 0:
+                logger_print("can not complete this level due to lack of resource")
+                break
+    
+    def attack_strategy(self, game_state):
+        """
+        """
+        pass
 
 
     def starter_strategy(self, game_state):
