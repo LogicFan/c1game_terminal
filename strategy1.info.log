@@ -1,0 +1,4545 @@
+=======turn 0=======
+place for priority level 0
+place unit 0 at location [0, 13]
+success
+place unit 0 at location [1, 13]
+success
+place unit 0 at location [2, 13]
+success
+place unit 0 at location [27, 13]
+success
+place unit 0 at location [26, 13]
+success
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+success
+place unit 2 at location [10, 11]
+success
+place unit 2 at location [17, 11]
+success
+place unit 2 at location [23, 11]
+success
+place unit 0 at location [4, 12]
+success
+place unit 0 at location [5, 11]
+success
+place unit 0 at location [9, 11]
+success
+place unit 0 at location [10, 12]
+success
+place unit 0 at location [11, 11]
+success
+place unit 0 at location [16, 11]
+success
+place unit 0 at location [17, 12]
+success
+place unit 0 at location [18, 11]
+success
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+no enough resource
+place unit 0 at location [24, 13]
+no enough resource
+place unit 2 at location [3, 12]
+no enough resource
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+no enough resource
+place unit 0 at location [2, 12]
+no enough resource
+place unit 0 at location [25, 12]
+no enough resource
+place unit 0 at location [26, 12]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 1=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+no enough resource
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+success
+place unit 0 at location [2, 12]
+success
+place unit 0 at location [25, 12]
+success
+place unit 0 at location [26, 12]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 2=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+no enough resource
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+success
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 3=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+success
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 4=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+success
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+no enough resource
+place unit 2 at location [20, 8]
+no enough resource
+place unit 0 at location [6, 10]
+success
+place unit 0 at location [21, 10]
+success
+place unit 0 at location [7, 9]
+no enough resource
+place unit 0 at location [20, 9]
+no enough resource
+place unit 1 at location [12, 1]
+no enough resource
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 5=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+no enough resource
+place unit 2 at location [20, 8]
+no enough resource
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+success
+place unit 0 at location [20, 9]
+success
+place unit 1 at location [12, 1]
+no enough resource
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 6=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+success
+place unit 2 at location [20, 8]
+no enough resource
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+no enough resource
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 7=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+no enough resource
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+no enough resource
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 8=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+success
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+no enough resource
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 9=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+no enough resource
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 10=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+success
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 11=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+success
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 12=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 13=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+success
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 14=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 15=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+success
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+success
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 16=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+success
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+success
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 17=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 18=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+success
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 19=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 20=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+success
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+no enough resource
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 21=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 22=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+success
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+no enough resource
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+no enough resource
+place unit 0 at location [20, 10]
+no enough resource
+place unit 0 at location [8, 9]
+no enough resource
+place unit 0 at location [19, 9]
+no enough resource
+place unit 0 at location [8, 8]
+no enough resource
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 23=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+success
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+success
+place unit 0 at location [20, 10]
+success
+place unit 0 at location [8, 9]
+success
+place unit 0 at location [19, 9]
+success
+place unit 0 at location [8, 8]
+success
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 24=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 25=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 26=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+success
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+no enough resource
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 27=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+no enough resource
+place unit 0 at location [10, 10]
+no enough resource
+place unit 0 at location [17, 10]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 28=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+success
+place unit 0 at location [10, 10]
+success
+place unit 0 at location [17, 10]
+success
+place for priority level 4
+place unit 2 at location [10, 5]
+no enough resource
+place unit 2 at location [17, 5]
+no enough resource
+place unit 0 at location [9, 8]
+success
+place unit 0 at location [18, 8]
+success
+place unit 0 at location [9, 7]
+no enough resource
+place unit 0 at location [10, 7]
+no enough resource
+place unit 0 at location [17, 7]
+no enough resource
+place unit 0 at location [18, 7]
+no enough resource
+place unit 0 at location [10, 6]
+no enough resource
+place unit 0 at location [11, 6]
+no enough resource
+place unit 0 at location [16, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [11, 5]
+no enough resource
+place unit 0 at location [16, 5]
+no enough resource
+place unit 1 at location [12, 2]
+no enough resource
+place unit 1 at location [15, 2]
+no enough resource
+place unit 1 at location [11, 2]
+no enough resource
+place unit 1 at location [16, 2]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 29=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+place for priority level 4
+place unit 2 at location [10, 5]
+no enough resource
+place unit 2 at location [17, 5]
+no enough resource
+place unit 0 at location [9, 8]
+this location already have unit
+place unit 0 at location [18, 8]
+this location already have unit
+place unit 0 at location [9, 7]
+no enough resource
+place unit 0 at location [10, 7]
+no enough resource
+place unit 0 at location [17, 7]
+no enough resource
+place unit 0 at location [18, 7]
+no enough resource
+place unit 0 at location [10, 6]
+no enough resource
+place unit 0 at location [11, 6]
+no enough resource
+place unit 0 at location [16, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [11, 5]
+no enough resource
+place unit 0 at location [16, 5]
+no enough resource
+place unit 1 at location [12, 2]
+no enough resource
+place unit 1 at location [15, 2]
+no enough resource
+place unit 1 at location [11, 2]
+no enough resource
+place unit 1 at location [16, 2]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 30=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 31=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+success
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+no enough resource
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 32=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+place for priority level 4
+place unit 2 at location [10, 5]
+no enough resource
+place unit 2 at location [17, 5]
+no enough resource
+place unit 0 at location [9, 8]
+this location already have unit
+place unit 0 at location [18, 8]
+this location already have unit
+place unit 0 at location [9, 7]
+success
+place unit 0 at location [10, 7]
+success
+place unit 0 at location [17, 7]
+success
+place unit 0 at location [18, 7]
+success
+place unit 0 at location [10, 6]
+no enough resource
+place unit 0 at location [11, 6]
+no enough resource
+place unit 0 at location [16, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [11, 5]
+no enough resource
+place unit 0 at location [16, 5]
+no enough resource
+place unit 1 at location [12, 2]
+no enough resource
+place unit 1 at location [15, 2]
+no enough resource
+place unit 1 at location [11, 2]
+no enough resource
+place unit 1 at location [16, 2]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 33=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+place for priority level 4
+place unit 2 at location [10, 5]
+no enough resource
+place unit 2 at location [17, 5]
+no enough resource
+place unit 0 at location [9, 8]
+this location already have unit
+place unit 0 at location [18, 8]
+this location already have unit
+place unit 0 at location [9, 7]
+this location already have unit
+place unit 0 at location [10, 7]
+this location already have unit
+place unit 0 at location [17, 7]
+this location already have unit
+place unit 0 at location [18, 7]
+this location already have unit
+place unit 0 at location [10, 6]
+no enough resource
+place unit 0 at location [11, 6]
+no enough resource
+place unit 0 at location [16, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [11, 5]
+no enough resource
+place unit 0 at location [16, 5]
+no enough resource
+place unit 1 at location [12, 2]
+no enough resource
+place unit 1 at location [15, 2]
+no enough resource
+place unit 1 at location [11, 2]
+no enough resource
+place unit 1 at location [16, 2]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 34=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+success
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+no enough resource
+place unit 0 at location [23, 13]
+no enough resource
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 35=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+no enough resource
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 36=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+success
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+success
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 37=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+success
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 38=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 39=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+success
+place unit 0 at location [26, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 40=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+success
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+place for priority level 4
+place unit 2 at location [10, 5]
+no enough resource
+place unit 2 at location [17, 5]
+no enough resource
+place unit 0 at location [9, 8]
+this location already have unit
+place unit 0 at location [18, 8]
+this location already have unit
+place unit 0 at location [9, 7]
+this location already have unit
+place unit 0 at location [10, 7]
+this location already have unit
+place unit 0 at location [17, 7]
+this location already have unit
+place unit 0 at location [18, 7]
+this location already have unit
+place unit 0 at location [10, 6]
+no enough resource
+place unit 0 at location [11, 6]
+no enough resource
+place unit 0 at location [16, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [17, 6]
+no enough resource
+place unit 0 at location [11, 5]
+no enough resource
+place unit 0 at location [16, 5]
+no enough resource
+place unit 1 at location [12, 2]
+no enough resource
+place unit 1 at location [15, 2]
+no enough resource
+place unit 1 at location [11, 2]
+no enough resource
+place unit 1 at location [16, 2]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 41=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 42=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+no enough resource
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 43=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+this location already have unit
+place unit 0 at location [24, 13]
+this location already have unit
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+success
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+success
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+success
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+place for priority level 4
+place unit 2 at location [10, 5]
+no enough resource
+place unit 2 at location [17, 5]
+no enough resource
+place unit 0 at location [9, 8]
+this location already have unit
+place unit 0 at location [18, 8]
+this location already have unit
+place unit 0 at location [9, 7]
+this location already have unit
+place unit 0 at location [10, 7]
+this location already have unit
+place unit 0 at location [17, 7]
+this location already have unit
+place unit 0 at location [18, 7]
+this location already have unit
+place unit 0 at location [10, 6]
+success
+place unit 0 at location [11, 6]
+success
+place unit 0 at location [16, 6]
+success
+place unit 0 at location [17, 6]
+success
+place unit 0 at location [17, 6]
+this location already have unit
+place unit 0 at location [11, 5]
+success
+place unit 0 at location [16, 5]
+no enough resource
+place unit 1 at location [12, 2]
+no enough resource
+place unit 1 at location [15, 2]
+no enough resource
+place unit 1 at location [11, 2]
+no enough resource
+place unit 1 at location [16, 2]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 44=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+this location already have unit
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+success
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+success
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+success
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+this location already have unit
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+this location already have unit
+place unit 0 at location [26, 12]
+this location already have unit
+place for priority level 2
+place unit 2 at location [7, 8]
+this location already have unit
+place unit 2 at location [20, 8]
+this location already have unit
+place unit 0 at location [6, 10]
+this location already have unit
+place unit 0 at location [21, 10]
+this location already have unit
+place unit 0 at location [7, 9]
+this location already have unit
+place unit 0 at location [20, 9]
+this location already have unit
+place unit 1 at location [12, 1]
+this location already have unit
+place unit 1 at location [15, 1]
+this location already have unit
+place for priority level 3
+place unit 0 at location [4, 13]
+success
+place unit 0 at location [23, 13]
+no enough resource
+place unit 0 at location [5, 12]
+this location already have unit
+place unit 0 at location [22, 12]
+no enough resource
+place unit 0 at location [6, 11]
+this location already have unit
+place unit 0 at location [21, 11]
+no enough resource
+place unit 0 at location [7, 10]
+this location already have unit
+place unit 0 at location [20, 10]
+this location already have unit
+place unit 0 at location [8, 9]
+this location already have unit
+place unit 0 at location [19, 9]
+this location already have unit
+place unit 0 at location [8, 8]
+this location already have unit
+place unit 0 at location [19, 8]
+this location already have unit
+place unit 0 at location [10, 10]
+this location already have unit
+place unit 0 at location [17, 10]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 45=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+success
+place unit 0 at location [26, 13]
+success
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+no enough resource
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
+=======turn 46=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+success
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+this location already have unit
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+no enough resource
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 47=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+success
+place unit 0 at location [27, 13]
+success
+place unit 0 at location [26, 13]
+success
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+no enough resource
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+success
+place unit 0 at location [23, 12]
+success
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+=======turn 48=======
+place for priority level 0
+place unit 0 at location [0, 13]
+this location already have unit
+place unit 0 at location [1, 13]
+this location already have unit
+place unit 0 at location [2, 13]
+this location already have unit
+place unit 0 at location [27, 13]
+this location already have unit
+place unit 0 at location [26, 13]
+this location already have unit
+place unit 0 at location [25, 13]
+success
+place unit 2 at location [4, 11]
+this location already have unit
+place unit 2 at location [10, 11]
+this location already have unit
+place unit 2 at location [17, 11]
+this location already have unit
+place unit 2 at location [23, 11]
+success
+place unit 0 at location [4, 12]
+this location already have unit
+place unit 0 at location [5, 11]
+this location already have unit
+place unit 0 at location [9, 11]
+this location already have unit
+place unit 0 at location [10, 12]
+this location already have unit
+place unit 0 at location [11, 11]
+this location already have unit
+place unit 0 at location [16, 11]
+this location already have unit
+place unit 0 at location [17, 12]
+this location already have unit
+place unit 0 at location [18, 11]
+this location already have unit
+place unit 0 at location [22, 11]
+this location already have unit
+place unit 0 at location [23, 12]
+this location already have unit
+place for priority level 1
+place unit 0 at location [3, 13]
+success
+place unit 0 at location [24, 13]
+no enough resource
+place unit 2 at location [3, 12]
+this location already have unit
+place unit 2 at location [24, 12]
+no enough resource
+place unit 0 at location [1, 12]
+this location already have unit
+place unit 0 at location [2, 12]
+this location already have unit
+place unit 0 at location [25, 12]
+no enough resource
+place unit 0 at location [26, 12]
+no enough resource
+can not complete this level due to lack of resource
+left SCRAMBLER cleaner
+right SCRAMBLER cleaner
+EMP ready to go
