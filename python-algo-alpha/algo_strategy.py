@@ -105,7 +105,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def adaptive_defense(self, game_state):
         # protect edge
-        if self.attack_stage != 2:
+        if self.attack_stage != 1:
             edge_list = [[0, 13], [1, 13], [26, 13], [27, 13]]
             game_state.attempt_spawn(FILTER, edge_list)
 
@@ -200,10 +200,8 @@ class AlgoStrategy(gamelib.AlgoCore):
     def attack_finish(self, game_state):
         if self.attack_stage != 2:
             return
-
-        filt_list = [[13, 6], [14, 6]]
+        
         edge_list = [[0, 13], [1, 13], [26, 13], [27, 13]]
-        game_state.attempt_remove(filt_list)
         game_state.attempt_spawn(FILTER, edge_list)
         self.attack_stage = 0
 
