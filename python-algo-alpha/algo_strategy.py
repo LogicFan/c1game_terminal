@@ -200,6 +200,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         filter_list = [[21, 7], [6, 7]]
 
         game_state.attempt_spawn(FILTER, filter_list[direction])
+        game_state.attempt_remove(filter_list[direction])
         game_state.attempt_spawn(unit_type, support_list[direction], supprot_num)
         game_state.attempt_spawn(unit_type, attack_list[direction], attack_num)
         self.attack_stage = 2
