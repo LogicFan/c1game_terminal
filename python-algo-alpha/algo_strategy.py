@@ -180,7 +180,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         # check conditon, change it later
         if game_state.get_resource(game_state.BITS) > 10:
-            self.attack_config = [1, 10, 0]
+            self.attack_config = [1, PING, 10]
         else:
             return
 
@@ -192,9 +192,15 @@ class AlgoStrategy(gamelib.AlgoCore):
         if self.attack_stage != 1:
             return
         
+        direction = self.attack_config[0]
+        unit_type = self.attack_config[1]
+        unit_num = self.attack_config[2]
+
         attack_list = [[19, 5], [8, 5]]
-        game_state.attempt_spawn(PING, attack_list[self.attack_config[0]], self.attack_config[1])
-        game_state.attempt_spawn(EMP,  attack_list[self.attack_config[0]], self.attack_config[2])
+        filter_list = [[20, 6], [7, 6]]
+
+        game_state.attempt_spawn(FILTER, filter_list[direction])
+        game_state.attempt_spawn(unit_type, attack_list[direction], unit_num)
         self.attack_stage = 2
 
     def attack_finish(self, game_state):
