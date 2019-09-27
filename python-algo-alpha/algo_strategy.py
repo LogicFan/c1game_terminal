@@ -48,16 +48,8 @@ class AlgoStrategy(gamelib.AlgoCore):
         self.scored_on_locations = []
 
         self.attack_stage = 0
-        self.attack_config = [0, 0, 0] # (direction, ping, emp)
+        self.attack_config = [] # (direction, attack_type, attack_num, support)
 
-    @staticmethod
-    def to_unit_type(num):
-        if num == 0:
-            return FILTER
-        elif num == 1:
-            return ENCRYPTOR
-        elif num == 2:
-            return DESTRUCTOR
 
     def on_turn(self, turn_state):
         """
@@ -178,9 +170,15 @@ class AlgoStrategy(gamelib.AlgoCore):
         if self.attack_stage != 0:
             return
 
+        # calculate the enemy defense level
+        # def enemy_defense_level(direction):
+        #     p1 = [[[0, 14]], 
+        #           [[27, 14]]]
+        #     p2 = 
+
         # check conditon, change it later
-        if game_state.get_resource(game_state.BITS) > 10:
-            self.attack_config = [1, PING, 10]
+        if game_state.get_resource(game_state.BITS) > 12:
+            self.attack_config = [1, PING, 8, 4]
         else:
             return
 
@@ -194,13 +192,16 @@ class AlgoStrategy(gamelib.AlgoCore):
         
         direction = self.attack_config[0]
         unit_type = self.attack_config[1]
-        unit_num = self.attack_config[2]
+        attack_num = self.attack_config[2]
+        supprot_num = self.attack_config[3]
 
+        support_list = [[18, 4], [9, 4]]
         attack_list = [[19, 5], [8, 5]]
         filter_list = [[20, 6], [7, 6]]
 
         game_state.attempt_spawn(FILTER, filter_list[direction])
-        game_state.attempt_spawn(unit_type, attack_list[direction], unit_num)
+        game_state.attempt_spawn(unit_type, support_list[direction], supprot_num)
+        game_state.attempt_spawn(unit_type, attack_list[direction], attack_num)
         self.attack_stage = 2
 
     def attack_finish(self, game_state):
