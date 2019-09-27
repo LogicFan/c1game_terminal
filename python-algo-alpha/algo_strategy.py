@@ -195,9 +195,9 @@ class AlgoStrategy(gamelib.AlgoCore):
         attack_num = self.attack_config[2]
         supprot_num = self.attack_config[3]
 
-        support_list = [[18, 4], [9, 4]]
-        attack_list = [[19, 5], [8, 5]]
-        filter_list = [[20, 6], [7, 6]]
+        support_list = [[19, 5], [8, 5]]
+        attack_list = [[20, 6], [7, 6]]
+        filter_list = [[21, 7], [6, 7]]
 
         game_state.attempt_spawn(FILTER, filter_list[direction])
         game_state.attempt_spawn(unit_type, support_list[direction], supprot_num)
