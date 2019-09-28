@@ -201,6 +201,12 @@ class AlgoStrategy(gamelib.AlgoCore):
             self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
 
 
+        (scram_p1, scram_n1), (scram_p2, scram_n2) = self.m.scrambler_protection()
+        if scram_n1:
+            game_state.attempt_spawn(SCRAMBLER, [scram_p1[0], scram_p1[1]], scram_n1)
+        if scram_n2:
+            game_state.attempt_spawn(SCRAMBLER, [scram_p2[0], scram_p2[1]], scram_n2)
+
         # Cache the trajectory so it does not get invalidated.
         trajectory = self.m.primal_self
 

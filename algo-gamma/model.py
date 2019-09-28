@@ -495,48 +495,50 @@ class Model:
 
     def scrambler_protection(self):
         path_collection = self.path1_self
-        path_index = []
-        for path in path_collection:
-            if not path:
-                path_index.append(0)
-            else:
-                path_index.append(path.hazard)
-        sorted_path_collection = [x for _,x in sorted(zip(path_index,path_collection))]
+
+        def path_index(path):
+            return path.hazard if path else 0
+
+        sorted_path_collection = sorted(path_collection, key=path_index)
 
         top_path    = sorted_path_collection[-1]
         second_path = sorted_path_collection[-2]
         
+        top_end_path=None
         if top_path:
             for pos in top_path:
                 if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
                     top_end=pos
             total_path=self.path1_self
             top_min_dis=100
-            top_end_path=None
-            for i in total_path:
-                end_dis=i.proximityTest(top_end,1)
+            for path in total_path:
+                if not path: continue
+                end_dis=path.proximityTest(top_end,1)
                 if end_dis<=top_min_dis:
                     top_min_dis=end_dis
-                    top_end_path=i
+                    top_end_path=path
+        second_end_path=None
         if second_path:
             for pos in second_path:
                 if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
                     second_end=pos
             second_min_dis=100
-            second_end_path=None
-            for i in total_path:
-                end_dis=i.proximityTest(second_end,1)
+            for path in total_path:
+                if not path: continue
+                end_dis=path.proximityTest(second_end,1)
                 if end_dis<=second_min_dis:
                     second_min_dis=end_dis
-                    second_end_path=i
+                    second_end_path=path
 
-        nEMP = int(self.bits_enemy // self.COST[UNIT_TYPE_TO_INDEX[EMP]])
+        nEMP = int(self.bits_enemy // self.COST[UNIT_TYPE_TO_INDEX[EMP]] // 2)
         if top_end_path:
-            tuple1 = (top_end_path[0], nEMP)
+            tuple1 = (top_end_path[0], 1)
+            #tuple1 = (top_end_path[0], nEMP)
         else:
             tuple1 = (None, 0)
         if second_end_path:
-            tuple2 = (second_end_path[0], int(nEMP // 2))
+            tuple2 = (second_end_path[0], 1)
+            #tuple2 = (second_end_path[0], int(nEMP // 2))
         else:
             tuple2 = (None, 0)
 
