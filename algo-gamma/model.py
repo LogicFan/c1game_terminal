@@ -722,30 +722,26 @@ class Model:
                 self.barrage_enemy[p] += 1
 
     def ping_chase_emp(self):
-        path_collection=self.path1_self
-        max_fea_path=None
-        max_fea=-1
+        path_collection = self.path1_self
+        max_fea_path = self.primal_self
+
+        if not max_fea_path:
+            return [(None, 0), (None, 0)]
+
+        ping_path = max_fea_path
+        ping_loc =ping_path[0]
+        ping_dist = ping_path.dist_self
+        target_loc = ping_path[-ping_dist]
+        emp_dist = ping_dist*self.SPEED[UNIT_TYPE_TO_INDEX[EMP]]//self.SPEED[UNIT_TYPE_TO_INDEX[PING]]
+        emp_loc = None
         for path in path_collection:
-            if not path:
-                max_fea_path=None
-            else:
-                if max_fea<=path.feasibility:
-                    max_fea_path=path
-                    max_fea=path.feasibility
-        ping_path=max_fea_path
-        ping_loc=ping_path[0]
-        ping_dist=ping_path.dist_self
-        target_loc=ping_path[-ping_dist]
-        emp_dist=ping_dist*self.SPEED[UNIT_TYPE_TO_INDEX[EMP]]//self.SPEED[UNIT_TYPE_TO_INDEX[PING]]
-        emp_loc=None
-        for path in path_collection:
-            if not path:
+            if not path and not emp_loc:
                 emp_loc=ping_loc
             else:
                 if target_loc in path:
                     if path[emp_dist-1] == target_loc:
                         emp_loc=path[0]
-        given_res=self.bits_self
+        given_res = self.bits_self
         if given_res-2*self.COST[UNIT_TYPE_TO_INDEX[EMP]]>0:
             num_of_emp=2
             num_of_ping=int((given_res-2*self.COST[UNIT_TYPE_TO_INDEX[EMP]])//self.COST[UNIT_TYPE_TO_INDEX[PING]])
