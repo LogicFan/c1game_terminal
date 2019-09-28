@@ -10,7 +10,7 @@ class Policy:
         """
 
         self.w_dist_self  = 0.0  # Distance traveled in friendly territory
-        self.w_dist_enemy = -1   # Distance traveled in enemy territory
+        self.w_dist_enemy = 1   # Distance traveled in enemy territory
         self.w_shield     = 0.1  # Shielding (Encryptor)
         self.w_damage     = -1   # Damage received from enemy
         self.w_pos_x      = -5   # Favour of right (+) vs left (-)
@@ -378,7 +378,7 @@ class Model:
         x_normal /= (transform.ARENA_SIZE - 1)
         y_normal /= (transform.HALF_ARENA - 1)
         path.feasibility = policy.w_dist_self  * path.dist_self \
-                         + policy.w_dist_enemy * path.dist_enemy \
+                         - policy.w_dist_enemy * path.dist_enemy \
                          + policy.w_shield     * path.shield \
                          + policy.w_damage     * path.damage \
                          + policy.w_pos_x      * x_normal \
