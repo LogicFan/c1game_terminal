@@ -8,8 +8,9 @@ import array
 import transform
 import model
 import json
+import functools 
 
-if len(sys.argv) >= 2 and sys.argv[1] == 'debug':
+if True:
     FILE_STABILITY_F     = "sampo.stability_f.array"
     FILE_STABILITY_E     = "sampo.stability_e.array"
     FILE_STABILITY_D     = "sampo.stability_d.array"
@@ -143,9 +144,9 @@ class AlgoStrategy(gamelib.AlgoCore):
         if self.defense_start_list != []:
             self.defense_start(game_state)
         
-        # # assume it is complete
-        # self.defense_basic_complete = True        
-        # self.defense_basic(game_state)
+        # assume it is complete
+        self.defense_basic_complete = True        
+        self.defense_basic(game_state)
         # 
         # if self.defense_basic_complete:
         #     self.defense_encryptor(game_state)
@@ -158,7 +159,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
 
         
-        gamelib.debug_write('Sampo turn {}'.format(game_state.turn_number))
+        gamelib.debug_write('Gamma turn {}'.format(game_state.turn_number))
         #game_state.suppress_warnings(True)  #Uncomment this line to suppress warnings.
 
         # Turn cycle:
@@ -237,32 +238,50 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def defense_basic(self, game_state):
         gamelib.debug_write('defense_basic')
-        game_map = game_state.game_map
 
-        def add_destructor(x, y):
-            if game_map[x, y] != []:
-            # location is not empty
-                return
-            
-            if (x, y) in self.defense_basic_dict:
-                if "R" in self.defense_basic_dict[(x, y)]:
-                    # we intentionly remove it, don't do anything
-                    return
-                if not "D" in self.defense_basic_dict[(x, y)]:
-                    # add desctructor info to dict
-                    self.defense_basic_dict[(x, y)].append("D")
-            gamelib.debug_write('location {}, {}'.format(x, y))
-            if game_state.attempt_spawn(DESTRUCTOR, [x, y]) == 0:
-                self.defense_basic_complete = False
+        destructor_list = []
+
+        def destructor_health(x, y):
+            game_map = game_state.game_map
+            if game_map[x, y] == []:
+                return 0
+            else:
+                return game_map[x, y][0].stability
+
+        def compare(x):
+            return x[0]
+
+        for i in range(0, 3):
+            destructor_list.append(
+                (destructor_health(1 + i, 12), 1 + i, 12))
+            destructor_list.append(
+                (destructor_health(26 - i, 12), 12 - i, 12))
+        for i in range(0, 2):
+            destructor_list.append(
+                (destructor_health(4 + i, 11 - i), 4 + i, 11 - i))
+            destructor_list.append(
+                (destructor_health(23 - i, 11 - i), 23 - i, 11 - i))
+        for i in [0, 1, 2, 3, 5, 6]:
+            destructor_list.append(
+                (destructor_health(7 + i, 8), 7 + i, 8))
+            destructor_list.append(
+                (destructor_health(20 - i, 8), 10 - i, 8))
         
-        for i in [0, 27, 1, 26, 2, 25]:
-            add_destructor(i, 13)
-        for i in range(4):
-            add_destructor(3 + i, 12 - i)
-            add_destructor(24 - i, 12 - i)
-        for i in range(7):
-            add_destructor(7 + i, 9)
-            add_destructor(20 - i, 9)
+        destructor_list.sort(key = compare)
+
+        for unit in destructor_list:
+            if unit[0] == 0:
+                game_state.attempt_spawn(DESTRUCTOR, [unit[1], unit[2]])
+            else:
+                break
+
+        for unit in destructor_list:
+            if unit[0] < 0.5 * self.m.STABILITY[UNIT_TYPE_TO_INDEX[DESTRUCTOR]]:
+                game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
+            else:
+                break
+        
+        
 
     def defense_encryptor(self, game_state):
         for i in range(0, 4):
