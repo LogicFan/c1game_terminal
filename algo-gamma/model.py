@@ -354,7 +354,20 @@ class Model:
             nEMP -= damage / EMP_STABILITY / EMP_SPEED
 
             # Currently not taking proximity into account.
-            path.pressure_dp[i] = max(nEMP * self.DAMAGE_F_EMP, 0)
+            path.pressure_dp[i] = nEMP * self.DAMAGE_F_EMP
+            if player == 0:
+                if transform.is_upperHalf(y):
+                    path.pressure_dp[i] -= \
+                        self.stability_F[p] + \
+                        self.stability_E[p] + \
+                        self.stability_D[p]
+            else:
+                if transform.is_lowerHalf(y):
+                    path.pressure_dp[i] -= \
+                        self.stability_F[p] + \
+                        self.stability_E[p] + \
+                        self.stability_D[p]
+            path.pressure_dp[i] = max(path.pressure_dp[i], 0)
 
         x_normal, y_normal = path.px[0], path.py[0]
         if player == 0:
