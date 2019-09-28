@@ -11,10 +11,10 @@ class Policy:
 
         self.w_dist_self  = 0.0  # Distance traveled in friendly territory
         self.w_dist_enemy = 1   # Distance traveled in enemy territory
-        self.w_shield     = 0.1  # Shielding (Encryptor)
+        self.w_shield     = 0.3  # Shielding (Encryptor)
         self.w_damage     = -1   # Damage received from enemy
-        self.w_pos_x      = -5   # Favour of right (+) vs left (-)
-        self.w_pos_y      = -5   # Favour of edge (+) vs center (-)
+        self.w_pos_x      = 0   # Favour of right (+) vs left (-)
+        self.w_pos_y      = 0   # Favour of edge (+) vs center (-)
 
         self.damage_bias  = 1.1
         # How many stability points per health point?
