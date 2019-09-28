@@ -447,6 +447,7 @@ class Model:
 
         if not self.primal_self:
             gamelib.debug_write('[Model] No primary trajectory is found!')
+            return
         else:
             gamelib.debug_write('[Model] Primal Path start at [{}, {}]'.format(
                 self.primal_self.px[0], self.primal_self.py[0]))
@@ -544,6 +545,24 @@ class Model:
             cores = self.cores_self if player == 0 else self.cores_enemy
             return cores / self.COST[i]
 
+    def addUnit(self, pos, unittype):
+        """
+        Called by spawnDefensiveUnit only. Can only add points in friendly
+        territory
+        """
+        uid = UNIT_TYPE_TO_INDEX[unittype]
+        assert transform.is_lowerHalf(pos[1])
+        p = transform.pos2_encode(pos)
+        self._add_stationary_unit(pos)
+        stability = self.STABILITY[uid]
+        if   uid == UNIT_TYPE_TO_INDEX[FILTER]: 
+            self.stability_F[p] = self.STABILITY[uid]
+        elif uid == UNIT_TYPE_TO_INDEX[ENCRYPTOR]:
+            self.stability_E[p] = self.STABILITY[uid]
+        elif uid == UNIT_TYPE_TO_INDEX[DESTRUCTOR]:
+            self._add_destructor_contribution(game_state, [pos[0], pos[1]])
+            self.stability_D[p] = self.STABILITY[uid]
+
 
 
     ### Game State Input ###
@@ -589,7 +608,6 @@ class Model:
 
         # Stores tuples (x, y, r) of points from origin with distance r.
         self.CIRCLE = transform.pos2_circle(self.RANGE[UNIT_TYPE_TO_INDEX[EMP]])
-
 
 
     def readGameState(self, game_state):
