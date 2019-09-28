@@ -10,7 +10,7 @@ import model
 import json
 import functools 
 
-if True:
+if len(sys.argv) >= 2 and sys.argv[1] == 'debug':
     FILE_STABILITY_F     = "sampo.stability_f.array"
     FILE_STABILITY_E     = "sampo.stability_e.array"
     FILE_STABILITY_D     = "sampo.stability_d.array"
