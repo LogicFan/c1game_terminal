@@ -529,27 +529,38 @@ class Model:
 
         path_collection = self.path1_self
 
+        def allowpath(path):
+            if path:
+                return path.dist_self < 5
+            else:
+                return True
         def path_index(path):
             if not path:
                 return 0
-            elif path.dist_self >= 10:
+            elif path.dist_self >= 5:
                 return 0
             else:
-                return path.hazard
+                assert path.hazard >= 0
+                return max(path.hazard, 0.5)
 
-        paths_left = sorted(path_collection[0:transform.HALF_ARENA], key=path_index)
-        paths_right = sorted(path_collection[transform.HALF_ARENA:], key=path_index)
+        paths_left = path_collection[0:transform.HALF_ARENA]
+        paths_left = [x for x in paths_left if allowpath(x)]
+        paths_left = sorted(paths_left, key=path_index)
 
-        path_1 = paths_left[-1]
+        paths_right = path_collection[transform.HALF_ARENA:]
+        paths_right = [x for x in paths_right if allowpath(x)]
+        paths_right = sorted(paths_right, key=path_index)
 
         def getOptimal(col):
+            if len(col) == 0:
+                return None
             path0 = None
-            if path_1:
-                for pos in path_1:
-                    if pos[1]>=min(transform.HALF_ARENA, path_1[-1][1]):
+            initial = col[-1]
+            if initial:
+                for pos in initial:
+                    if pos[1] >= min(transform.HALF_ARENA, initial[-1][1]):
                         top_end = pos
-
-                total_path=paths_left
+                total_path = col
                 top_min_dis=100
                 for path in total_path:
                     if not path: continue
@@ -582,6 +593,9 @@ class Model:
         #            second_end_path=path
 
         if path_l:
+            assert path_l.dist_self < 5
+            if path_r:
+                assert path_r.dist_self < 5
             if path_r:
                 return (path_l, nScrambler), (path_r, nScrambler)
             else:
