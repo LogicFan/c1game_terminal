@@ -221,6 +221,21 @@ class AlgoStrategy(gamelib.AlgoCore):
 
 
         (scram1, scram_n1), (scram2, scram_n2) = self.m.scrambler_protection()
+
+        # Cache the trajectory so it does not get invalidated.
+        trajectory = self.m.primal_self
+
+        if trajectory:
+            flag = self.deployAttack(game_state, trajectory)
+            if flag:
+                # Attack succeess
+                cores_remain = 4 if self.m.bits_enemy > 10 else 0
+                self.m.markTrajectory(trajectory)
+                self.servicePath(game_state, trajectory, cores_remain=cores_remain)
+
+                # Only 2 scramblers!
+                scram_n1 = min(scram_n1, 1)
+                scram_n2 = min(scram_n2, 1)
         if scram_n1:
             x,y = scram1[0]
             self.m.markTrajectory(scram1)
@@ -229,17 +244,6 @@ class AlgoStrategy(gamelib.AlgoCore):
             x,y = scram2[0]
             self.m.markTrajectory(scram2)
             game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n2)
-
-        # Cache the trajectory so it does not get invalidated.
-        trajectory = self.m.primal_self
-
-
-        if trajectory:
-            flag = self.deployAttack(game_state, trajectory)
-            if flag:
-                cores_remain = 4 if self.m.bits_enemy > 10 else 0
-                self.m.markTrajectory(trajectory)
-                self.servicePath(game_state, trajectory, cores_remain=cores_remain)
 
 
         #self.m.readPaths(game_state)
@@ -434,7 +438,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def numberEMPPing(self, game_state):
         bits = game_state.get_resource(game_state.BITS)
-        nEMPs = int(2 + self.m.number_D_enemy * 0.5)
+        nEMPs = int(2 + self.m.number_D_enemy * 0.25)
         nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) \
                 // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
 

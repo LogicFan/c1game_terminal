@@ -220,6 +220,8 @@ class Model:
         self.stability_E = array.array('f', [0] * transform.ARENA_VOL)
         self.stability_D = array.array('f', [0] * transform.ARENA_VOL)
 
+        self.number_E_self = 0
+        self.number_E_enemy = 0
         self.number_D_self = 0
         self.number_D_enemy = 0
         #
@@ -518,49 +520,67 @@ class Model:
         """
         Return ((path, number), (path, number)) for scramblers
         """
+        # number of scramblers in each path
+        bias_cores = self.cores_enemy / self.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]] / 10 \
+                + self.number_E_enemy
+        bias_cores /= 20
+        bias_bits = self.bits_enemy
+        nScrambler = int(min(max(self.bits_enemy * (1 + bias_cores) / 10, 1), 2))
+
         path_collection = self.path1_self
 
         def path_index(path):
             return path.hazard if path else 0
 
-        sorted_path_collection = sorted(path_collection, key=path_index)
+        paths_left = sorted(path_collection[0:transform.HALF_ARENA], key=path_index)
+        paths_right = sorted(path_collection[transform.HALF_ARENA:], key=path_index)
 
-        top_path    = sorted_path_collection[-1]
-        second_path = sorted_path_collection[-2]
-        
-        top_end_path=None
-        if top_path:
-            for pos in top_path:
-                if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
-                    top_end=pos
-            total_path=self.path1_self
-            top_min_dis=100
-            for path in total_path:
-                if not path: continue
-                end_dis=path.proximityTest(top_end,2)
-                if end_dis<=top_min_dis:
-                    top_min_dis=end_dis
-                    top_end_path=path
-        second_end_path=None
-        if second_path:
-            for pos in second_path:
-                if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
-                    second_end=pos
-            second_min_dis=100
-            for path in total_path:
-                if not path: continue
-                end_dis=path.proximityTest(second_end,2)
-                if end_dis<=second_min_dis:
-                    second_min_dis=end_dis
-                    second_end_path=path
+        path_1 = paths_left[-1]
 
-        # number of scramblers in each path
-        nScrambler = int(max(self.bits_enemy / 7.5, 1))
-        if top_end_path:
-            if second_end_path:
-                return (top_end_path, nScrambler), (second_end_path, nScrambler)
+        def getOptimal(col):
+            path0 = None
+            if path_1:
+                for pos in path_1:
+                    if pos[1]>=min(transform.HALF_ARENA, path_1[-1][1]):
+                        top_end = pos
+
+                total_path=paths_left
+                top_min_dis=100
+                for path in total_path:
+                    if not path: continue
+                    
+                    end_dis = path.proximityTest(top_end, 2)
+                    if end_dis <= top_min_dis:
+                        top_min_dis=end_dis
+                        path0 = path
+            return path0
+
+        path_l = getOptimal(paths_left)
+        path_r = getOptimal(paths_right)
+
+        if not path_l:
+            path_l = path_r
+            path_r = None
+
+        #second_end_path=None
+        #path_2 = paths_left[0]
+        #if second_path:
+        #    for pos in second_path:
+        #        if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
+        #            second_end=pos
+        #    second_min_dis=100
+        #    for path in total_path:
+        #        if not path: continue
+        #        end_dis=path.proximityTest(second_end,2)
+        #        if end_dis<=second_min_dis:
+        #            second_min_dis=end_dis
+        #            second_end_path=path
+
+        if path_l:
+            if path_r:
+                return (path_l, nScrambler), (path_r, nScrambler)
             else:
-                return (top_end_path, nScrambler * 2), (None, 0)
+                return (path_l, nScrambler * 2), (None, 0)
         else:
             return (None, 0), (None, 0)
 
@@ -656,6 +676,8 @@ class Model:
         self.cores_self = game_state.get_resource(game_state.CORES, 0)
         self.cores_enemy = game_state.get_resource(game_state.CORES, 1)
 
+        self.number_E_self = 0
+        self.number_E_enemy = 0
         self.number_D_self = 0
         self.number_D_enemy = 0
         # Primary attack trajectories
@@ -687,6 +709,10 @@ class Model:
                     self._add_stationary_unit([x,y], attacking=False)
                     self.stability_F[p] = stability
                 elif unit.unit_type == ENCRYPTOR:
+                    if transform.is_lowerHalf(y):
+                        self.number_E_self += 1
+                    else:
+                        self.number_E_enemy += 1
                     self._add_stationary_unit([x,y], attacking=False)
                     self.stability_E[p] = stability
                 elif unit.unit_type == DESTRUCTOR:
