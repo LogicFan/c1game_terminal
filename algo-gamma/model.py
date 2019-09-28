@@ -11,10 +11,10 @@ class Policy:
 
         self.w_dist_self  = 0.0  # Distance traveled in friendly territory
         self.w_dist_enemy = 1   # Distance traveled in enemy territory
-        self.w_shield     = 0.1  # Shielding (Encryptor)
+        self.w_shield     = 0.3  # Shielding (Encryptor)
         self.w_damage     = -1   # Damage received from enemy
-        self.w_pos_x      = -5   # Favour of right (+) vs left (-)
-        self.w_pos_y      = -5   # Favour of edge (+) vs center (-)
+        self.w_pos_x      = 0   # Favour of right (+) vs left (-)
+        self.w_pos_y      = 0   # Favour of edge (+) vs center (-)
 
         self.damage_bias  = 1.1
         # How many stability points per health point?
@@ -367,7 +367,9 @@ class Model:
                         self.stability_F[p] + \
                         self.stability_E[p] + \
                         self.stability_D[p]
-            path.pressure_dp[i] = max(path.pressure_dp[i], 0)
+
+            AMBIENT_PRESSURE = self.DAMAGE_F_EMP
+            path.pressure_dp[i] = max(path.pressure_dp[i], AMBIENT_PRESSURE)
 
         x_normal, y_normal = path.px[0], path.py[0]
         if player == 0:
@@ -405,7 +407,7 @@ class Model:
                 else:
                     return math.exp(x - m)
             l = [condexp(x - m) for x in l]
-            m2 = max(l)
+            m2 = sum(l)
             l = [x / m2 for x in l]
             return l
 
@@ -425,6 +427,8 @@ class Model:
         # Use weighted feasibility to get pressure field for the other player
         feas = [extract_feas(p) for p in self.path1_self]
         feas = softmax(feas)
+        if max(feas) <= 0.0:
+            gamelib.debug_write("Self path maximum feasibility = 0")
         for (f, path) in zip(feas, self.path1_self):
             if f <= 0: continue
             for i in range(len(path)):
@@ -447,6 +451,8 @@ class Model:
         # Use weighted feasibility to get pressure field for the other player
         feas = [extract_feas(p) for p in self.path1_enemy]
         feas = softmax(feas)
+        if max(feas) <= 0.0:
+            gamelib.debug_write("Enemy path maximum feasibility = 0")
         for (f, path) in zip(feas, self.path1_enemy):
             if f <= 0: continue
             for i in range(len(path)):
@@ -495,48 +501,51 @@ class Model:
 
     def scrambler_protection(self):
         path_collection = self.path1_self
-        path_index = []
-        for path in path_collection:
-            if not path:
-                path_index.append(0)
-            else:
-                path_index.append(path.hazard)
-        sorted_path_collection = [x for _,x in sorted(zip(path_index,path_collection))]
+
+        def path_index(path):
+            return path.hazard if path else 0
+
+        sorted_path_collection = sorted(path_collection, key=path_index)
 
         top_path    = sorted_path_collection[-1]
         second_path = sorted_path_collection[-2]
         
+        top_end_path=None
         if top_path:
             for pos in top_path:
                 if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
                     top_end=pos
             total_path=self.path1_self
             top_min_dis=100
-            top_end_path=None
-            for i in total_path:
-                end_dis=i.proximityTest(top_end,1)
+            for path in total_path:
+                if not path: continue
+                end_dis=path.proximityTest(top_end,2)
                 if end_dis<=top_min_dis:
                     top_min_dis=end_dis
-                    top_end_path=i
+                    top_end_path=path
+        second_end_path=None
         if second_path:
             for pos in second_path:
                 if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
                     second_end=pos
             second_min_dis=100
-            second_end_path=None
-            for i in total_path:
-                end_dis=i.proximityTest(second_end,1)
+            for path in total_path:
+                if not path: continue
+                end_dis=path.proximityTest(second_end,2)
                 if end_dis<=second_min_dis:
                     second_min_dis=end_dis
-                    second_end_path=i
+                    second_end_path=path
 
-        nEMP = int(self.bits_enemy // self.COST[UNIT_TYPE_TO_INDEX[EMP]])
+        # number of scramblers in each path
+        nScrambler = int(max(self.bits_enemy // 10, 1))
         if top_end_path:
-            tuple1 = (top_end_path[0], nEMP)
+            tuple1 = (top_end_path[0], nScrambler)
+            #tuple1 = (top_end_path[0], nEMP)
         else:
             tuple1 = (None, 0)
         if second_end_path:
-            tuple2 = (second_end_path[0], int(nEMP // 2))
+            tuple2 = (second_end_path[0], nScrambler)
+            #tuple2 = (second_end_path[0], int(nEMP // 2))
         else:
             tuple2 = (None, 0)
 
