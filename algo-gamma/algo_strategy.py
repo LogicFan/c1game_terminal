@@ -209,6 +209,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
 
 
+        (scram1, scram_n1), (scram2, scram_n2) = self.m.scrambler_protection()
 
         # Cache the trajectory so it does not get invalidated.
         trajectory = self.m.primal_self
@@ -216,19 +217,22 @@ class AlgoStrategy(gamelib.AlgoCore):
         if trajectory:
             flag = self.deployAttack(game_state, trajectory)
             if flag:
+                # Attack succeess
                 cores_remain = 4 if self.m.bits_enemy > 10 else 0
                 self.m.markTrajectory(trajectory)
                 self.servicePath(game_state, trajectory, cores_remain=cores_remain)
-        else:
-            (scram1, scram_n1), (scram2, scram_n2) = self.m.scrambler_protection()
-            if scram_n1:
-                x,y = scram1[0]
-                self.m.markTrajectory(scram1)
-                game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n1)
-            if scram_n2:
-                x,y = scram2[0]
-                self.m.markTrajectory(scram2)
-                game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n2)
+
+                # Only 2 scramblers!
+                scram_n1 = min(scram_n1, 1)
+                scram_n2 = min(scram_n2, 1)
+        if scram_n1:
+            x,y = scram1[0]
+            self.m.markTrajectory(scram1)
+            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n1)
+        if scram_n2:
+            x,y = scram2[0]
+            self.m.markTrajectory(scram2)
+            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n2)
 
 
         #self.m.readPaths(game_state)
