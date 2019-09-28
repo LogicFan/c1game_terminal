@@ -219,9 +219,9 @@ class AlgoStrategy(gamelib.AlgoCore):
 
 
         if trajectory:
-            self.m.markTrajectory(trajectory)
             flag = self.deployAttack(game_state, trajectory)
             if flag:
+                self.m.markTrajectory(trajectory)
                 self.servicePath(game_state, trajectory, cores_remain=4)
 
 
