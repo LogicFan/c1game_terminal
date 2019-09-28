@@ -249,12 +249,12 @@ class AlgoStrategy(gamelib.AlgoCore):
             x,y = scram1[0]
             self.m.markTrajectory(scram1)
             # Mirror attack trajectory
-            game_state.attempt_spawn(SCRAMBLER, [transform.ARENA_SIZE - 1 - x,y], scram_n1)
+            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n1)
         if scram_n2:
             x,y = scram2[0]
             self.m.markTrajectory(scram2)
             # Mirror attack trajectory
-            game_state.attempt_spawn(SCRAMBLER, [transform.ARENA_SIZE - 1 - x,y], scram_n2)
+            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n2)
 
 
         #self.m.readPaths(game_state)

@@ -549,7 +549,7 @@ class Model:
         paths_right = [x for x in paths_right if allowpath(x)]
         paths_right = sorted(paths_right, key=path_index)
 
-        gamelib.debug_write("Left paths: {}, Right paths: {}".format(len(paths_left), len(paths_right)))
+        #gamelib.debug_write("Left paths: {}, Right paths: {}".format(len(paths_left), len(paths_right)))
 
         def getOptimal(col):
             if len(col) == 0:
