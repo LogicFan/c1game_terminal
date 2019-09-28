@@ -96,6 +96,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         self.attack_stage = 0
         self.attack_config = [] # (direction, attack_type, attack_num, support)
+        self.last_attack_stage = 0
 
     def defense_init(self):
         # initialize defense needed variable, should be in on_game_start
@@ -235,6 +236,12 @@ class AlgoStrategy(gamelib.AlgoCore):
             self.close_door(game_state)
         game_state.submit_turn()
 
+    def last_attack(self, game_state):
+        if self.last_attack_stage == 0:
+            for y in range(0, 14):
+                for x in range(0, 0):
+                    pass 
+
     def defense_start(self, game_state):
         gamelib.debug_write('defense_start')
         for i in range(0, len(self.defense_start_list)):
@@ -255,7 +262,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             game_state.attempt_spawn(FILTER, [27 + i, 13])
 
     def defense_corner_dtor(self, game_state, reserve):
-        corner_dtor_list = [[3, 11], [24, 11], [4, 10], [23, 10]]
+        corner_dtor_list = [[2, 11], [25, 11], [3, 11], [24, 11]]
         for unit in corner_dtor_list:
             if game_state.get_resource(game_state.CORES) <= reserve:
                 return
