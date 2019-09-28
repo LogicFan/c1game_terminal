@@ -218,7 +218,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         #self.m.readPaths(game_state)
 
-
+        self.close_door(game_state)
         game_state.submit_turn()
 
     def defense_start(self, game_state):
@@ -282,10 +282,15 @@ class AlgoStrategy(gamelib.AlgoCore):
                 break
 
         for unit in destructor_list:
-            if game_state.get_resource(game_state.CORES) <= 10:
+            if game_state.get_resource(game_state.CORES) <= 15:
                 return
             game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
             gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
+
+    def close_door(self, game_state):
+        for unit in self.defense_door_list:
+            self.spawnDefensiveUnit(game_state, DESTRUCTOR, unit)
+            game_state.attempt_remove(unit)
     
     def attack_prepare(self, game_state):
         if self.attack_stage != 0:
