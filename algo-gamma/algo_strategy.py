@@ -201,11 +201,10 @@ class AlgoStrategy(gamelib.AlgoCore):
         # Cache the trajectory so it does not get invalidated.
         trajectory = self.m.primal_self
 
-        self.servicePath(game_state, trajectory)
-        self.deployDefence(game_state)
-
         if trajectory:
-            self.deployAttack(game_state, trajectory)
+            flag = self.deployAttack(game_state, trajectory)
+            if flag:
+                self.servicePath(game_state, trajectory)
 
         #self.m.readPaths(game_state)
 
@@ -332,15 +331,12 @@ class AlgoStrategy(gamelib.AlgoCore):
                 return
             x = path.px[i]
             y = path.py[i]
-            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y])
-            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x-1, y])
-            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x, y+1])
-
-    def deployDefence(self, game_state):
-        """
-        Deploy defensive units to thwart enemy path based on the pressure.
-        """
-        pass
+            if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y]):
+                game_state.attempt_remove([[x+1,y]])
+            if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x-1, y]):
+                game_state.attempt_remove([[x-1,y]])
+            if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x, y+1]):
+                game_state.attempt_remove([[x,y+1]])
 
     def deployAttack(self, game_state, trajectory):
         """
@@ -357,13 +353,19 @@ class AlgoStrategy(gamelib.AlgoCore):
         nPings = int(bits // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
         nEMPs  = int(bits // self.m.COST[UNIT_TYPE_TO_INDEX[EMP]])
 
+        if nEMPs >= 5:
+            game_state.attempt_spawn(EMP, [x0, y0], int(nEMPs))
+            return True
+        else:
+            return False
+
         #nPings_survive = self.m.evaluatePathThroughput(trajectory,
         #    UNIT_TYPE_TO_INDEX[PING], nPings)
         nEMP_survive = self.m.evaluatePathThroughput(trajectory,
             UNIT_TYPE_TO_INDEX[EMP], nEMPs)
 
-        if nEMP_survive >= 5:
-            game_state.attempt_spawn(EMP, [x0, y0], int(nEMPs))
+        gamelib.debug_write('Survival rate: {}'.format(nEMP_survive))
+
         #elif nPings_survive >= 4:
         #    game_state.attempt_spawn(PING, [x0, y0], int(nPings))
 
@@ -414,23 +416,25 @@ class AlgoStrategy(gamelib.AlgoCore):
         x,y = location
         if not game_state.game_map.in_arena_bounds([x,y]) \
                 or transform.is_upperHalf(y):
-            return
+            return False
         if (x,y) in self.m.prohibited_loc:
             gamelib.debug_write( \
                     '[spawnDefensiveUnit] Attempt to spawn on trajectory: {}.'.format(location))
-            return
+            return False
         if game_state.contains_stationary_unit(location):
             gamelib.debug_write( \
                     '[spawnDefensiveUnit] Defensive unit exists: {} at {}.'.format(ty, location))
-            return
+            return False
 
         result = game_state.attempt_spawn(ty, location)
         if result == 0:
             gamelib.debug_write( \
                     '[spawnDefensiveUnit] Could not spwan at location {}'.format(location))
+            return False
 
         self.m.addUnit(game_state, location, ty)
         self.m.resetPaths()
+        return True
 
 if __name__ == "__main__":
     # DO NOT DIVERT stdout
