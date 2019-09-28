@@ -440,6 +440,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             gamelib.debug_write( \
                     '[spawnDefensiveUnit] Could not spwan at location {}'.format(location))
 
+        self.m.addUnit(location, ty)
         self.m.resetPaths()
 
 if __name__ == "__main__":
