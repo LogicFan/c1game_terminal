@@ -373,10 +373,23 @@ class AlgoStrategy(gamelib.AlgoCore):
         cores = game_state.get_resource(game_state.CORES) - cores_remain
         n = len(path)
         k = int(cores // self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]])
-        for i in range(n):
-            x = path.px[i]
-            y = path.py[i]
-            for (dx, dy) in [(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,1)]:
+
+        for (x,y) in path:
+            for (dx, dy) in [(1,1),(0,1),(-1,1)]:
+                if k == 0:
+                    return
+                if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+dx, y+dy]):
+                    k -= 1
+                    game_state.attempt_remove([[x+dx,y+dy]])
+        for (x,y) in path:
+            for (dx, dy) in [(1,0),(0,0),(-1,0)]:
+                if k == 0:
+                    return
+                if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+dx, y+dy]):
+                    k -= 1
+                    game_state.attempt_remove([[x+dx,y+dy]])
+        for (x,y) in path:
+            for (dx, dy) in [(1,-1),(0,-1),(-1,-1)]:
                 if k == 0:
                     return
                 if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+dx, y+dy]):
