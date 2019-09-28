@@ -525,12 +525,17 @@ class Model:
                 + self.number_E_enemy
         bias_cores /= 20
         bias_bits = self.bits_enemy
-        nScrambler = int(min(max(self.bits_enemy * (1 + bias_cores) / 10, 1), 2))
+        nScrambler = int(min(max(self.bits_enemy * (1 + bias_cores) / 20, 1), 2))
 
         path_collection = self.path1_self
 
         def path_index(path):
-            return path.hazard if path else 0
+            if not path:
+                return 0
+            elif path.dist_self >= 10:
+                return 0
+            else:
+                return path.hazard
 
         paths_left = sorted(path_collection[0:transform.HALF_ARENA], key=path_index)
         paths_right = sorted(path_collection[transform.HALF_ARENA:], key=path_index)

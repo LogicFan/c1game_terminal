@@ -209,13 +209,22 @@ class AlgoStrategy(gamelib.AlgoCore):
             self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
 
 
-        (scram1, scram_n1), (scram2, scram_n2) = self.m.scrambler_protection()
+        if game_state.turn_number <= 2:
+            scram1 = None
+            scram_n1 = 0
+            scram2 = None
+            scram_n2 = 0
+        else:
+            (scram1, scram_n1), (scram2, scram_n2) = self.m.scrambler_protection()
 
         # Cache the trajectory so it does not get invalidated.
         trajectory = self.m.primal_self
 
         if trajectory:
-            flag = self.deployAttack(game_state, trajectory)
+            if scram_n1 > 0 or scram_n2 > 0: reserve_bits = 2
+            else:                            reserve_bits = 0
+
+            flag = self.deployAttack(game_state, trajectory, reserve=reserve_bits)
             if flag:
                 # Attack succeess
                 cores_remain = 4 if self.m.bits_enemy > 10 else 0
@@ -228,11 +237,13 @@ class AlgoStrategy(gamelib.AlgoCore):
         if scram_n1:
             x,y = scram1[0]
             self.m.markTrajectory(scram1)
-            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n1)
+            # Mirror attack trajectory
+            game_state.attempt_spawn(SCRAMBLER, [transform.ARENA_SIZE - 1 - x,y], scram_n1)
         if scram_n2:
             x,y = scram2[0]
             self.m.markTrajectory(scram2)
-            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n2)
+            # Mirror attack trajectory
+            game_state.attempt_spawn(SCRAMBLER, [transform.ARENA_SIZE - 1 - x,y], scram_n2)
 
 
         #self.m.readPaths(game_state)
@@ -273,7 +284,6 @@ class AlgoStrategy(gamelib.AlgoCore):
             game_state.attempt_spawn(DESTRUCTOR, unit)
 
     def defense_basic(self, game_state, reserve):
-        gamelib.debug_write('defense_basic')
 
         destructor_list = []
 
@@ -409,8 +419,8 @@ class AlgoStrategy(gamelib.AlgoCore):
                     k -= 1
                     game_state.attempt_remove([[x+dx,y+dy]])
 
-    def numberEMPPing(self, game_state):
-        bits = game_state.get_resource(game_state.BITS)
+    def numberEMPPing(self, game_state, reserve=0):
+        bits = game_state.get_resource(game_state.BITS) - reserve
         nEMPs = int(2 + self.m.number_D_enemy * 0.25)
         nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) \
                 // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
@@ -420,7 +430,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         else:
             return 0,0
 
-    def deployAttack(self, game_state, trajectory):
+    def deployAttack(self, game_state, trajectory, reserve=0):
         """
         Launch ping-emp rush along the primary path
         """
@@ -431,7 +441,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         gamelib.debug_write('Deploying Attack from [{},{}]'.format(x0,y0))
 
         # Evaluate throughput using pings and emp.
-        nEMPs, nPings = self.numberEMPPing(game_state)
+        nEMPs, nPings = self.numberEMPPing(game_state, reserve=reserve)
 
         if nEMPs > 0 and nPings > 0:
             game_state.attempt_spawn(EMP, [x0, y0], int(nEMPs))
