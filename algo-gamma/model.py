@@ -15,6 +15,7 @@ class Policy:
         self.w_damage     = -1   # Damage received from enemy
         self.w_pos_x      = 0   # Favour of right (+) vs left (-)
         self.w_pos_y      = 0   # Favour of edge (+) vs center (-)
+        self.w_harass     = 25
 
         self.damage_bias  = 1.1
         # How many stability points per health point?
@@ -399,7 +400,7 @@ class Model:
                          + policy.w_damage     * path.damage \
                          + policy.w_pos_x      * x_normal \
                          + policy.w_pos_y      * y_normal \
-                         + path.harass * 10
+                         + policy.w_harass     * path.harass
         return path.feasibility
 
     def analyseAttack(self):

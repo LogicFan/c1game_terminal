@@ -143,7 +143,8 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         self.m.clearTrajectory()
 
-        reserve = 10
+        ne, np = self.numberEMPPing(game_state)
+        reserve = 10 if np > 0 else 0
 
         if self.defense_start_list != []:
             self.defense_start(game_state)
@@ -224,8 +225,9 @@ class AlgoStrategy(gamelib.AlgoCore):
         if trajectory:
             flag = self.deployAttack(game_state, trajectory)
             if flag:
+                cores_remain = 4 if self.m.bits_enemy > 10 else 0
                 self.m.markTrajectory(trajectory)
-                self.servicePath(game_state, trajectory, cores_remain=4)
+                self.servicePath(game_state, trajectory, cores_remain=cores_remain)
 
 
         #self.m.readPaths(game_state)
@@ -396,6 +398,17 @@ class AlgoStrategy(gamelib.AlgoCore):
                     k -= 1
                     game_state.attempt_remove([[x+dx,y+dy]])
 
+    def numberEMPPing(self, game_state):
+        bits = game_state.get_resource(game_state.BITS)
+        nEMPs = int(2 + self.m.number_D_enemy * 0.5)
+        nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) \
+                // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
+
+        if nPings >= 5:
+            return nEMPs, nPings
+        else:
+            return 0,0
+
     def deployAttack(self, game_state, trajectory):
         """
         Launch ping-emp rush along the primary path
@@ -405,13 +418,11 @@ class AlgoStrategy(gamelib.AlgoCore):
         x0 = trajectory.px[0]
         y0 = trajectory.py[0]
         gamelib.debug_write('Deploying Attack from [{},{}]'.format(x0,y0))
-        bits = game_state.get_resource(game_state.BITS)
 
         # Evaluate throughput using pings and emp.
-        nEMPs = int(2 + self.m.number_D_enemy * 0.5)
-        nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
+        nEMPs, nPings = self.numberEMPPing(game_state)
 
-        if nPings >= 5:
+        if nEMPs > 0 and nPings > 0:
             game_state.attempt_spawn(EMP, [x0, y0], int(nEMPs))
             game_state.attempt_spawn(PING, [x0, y0], int(nPings))
             return True
