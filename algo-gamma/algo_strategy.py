@@ -282,11 +282,10 @@ class AlgoStrategy(gamelib.AlgoCore):
                 break
 
         for unit in destructor_list:
-            if unit[0] < 0.5 * self.m.STABILITY[UNIT_TYPE_TO_INDEX[DESTRUCTOR]]:
-                game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
-                gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
-            else:
-                break
+            game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
+            gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
+            if game_state.get_resource(game_state.CORES) <= 10:
+                return
     
     def attack_prepare(self, game_state):
         if self.attack_stage != 0:
