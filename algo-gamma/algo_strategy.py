@@ -450,7 +450,8 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def numberEMPPing(self, game_state, reserve=0):
         bits = game_state.get_resource(game_state.BITS) - reserve
-        nEMPs = int(2 + self.m.number_D_enemy * 0.25)
+        destruct = min(self.m.number_D_enemy, 10)
+        nEMPs = int(2 + destruct * 0.2)
         nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) \
                 // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
 
