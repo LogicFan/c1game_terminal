@@ -49,6 +49,7 @@ class Path:
         self.dist_self = 0
         self.dist_enemy = 0
         self.feasibility = float("-inf")
+        self.harass = 0.0
         self.analysed_attack = False
 
         self.hazard_dp = array.array('f', [0] * l)
@@ -217,6 +218,9 @@ class Model:
         self.stability_F = array.array('f', [0] * transform.ARENA_VOL)
         self.stability_E = array.array('f', [0] * transform.ARENA_VOL)
         self.stability_D = array.array('f', [0] * transform.ARENA_VOL)
+
+        self.number_D_self = 0
+        self.number_D_enemy = 0
         #
         # Pressure field represents the expected total damage when
         # 1. The enemy randomly samples a path
@@ -311,6 +315,7 @@ class Model:
         path.feasibility = 0.0
         path.shield = 0.0
         path.damage = 0.0
+        path.harass = 0.0
 
         if path.isDeadend:
             path.feasibility = float('-inf')
@@ -353,15 +358,24 @@ class Model:
             nEMP += shield / EMP_STABILITY
             nEMP -= damage / EMP_STABILITY / EMP_SPEED
 
-            # Currently not taking proximity into account.
             path.pressure_dp[i] = nEMP * self.DAMAGE_F_EMP
             if player == 0:
+                if self.proximity_enemy[p] == EMP_RANGE:
+                    path.harass += 1
+                    #gamelib.debug_write('Harassed (Self)')
+
+                # This is always 0
                 if transform.is_upperHalf(y):
                     path.pressure_dp[i] -= \
                         self.stability_F[p] + \
                         self.stability_E[p] + \
                         self.stability_D[p]
             else:
+                if self.proximity_self[p] == EMP_RANGE:
+                    path.harass += 1
+                    #gamelib.debug_write('Harassed (Enemy)')
+
+                # This is always 0
                 if transform.is_lowerHalf(y):
                     path.pressure_dp[i] -= \
                         self.stability_F[p] + \
@@ -384,7 +398,8 @@ class Model:
                          + policy.w_shield     * path.shield \
                          + policy.w_damage     * path.damage \
                          + policy.w_pos_x      * x_normal \
-                         + policy.w_pos_y      * y_normal
+                         + policy.w_pos_y      * y_normal \
+                         + path.harass * 10
         return path.feasibility
 
     def analyseAttack(self):
@@ -575,14 +590,16 @@ class Model:
         uid = UNIT_TYPE_TO_INDEX[unittype]
         assert transform.is_lowerHalf(pos[1])
         p = transform.pos2_encode(pos)
-        self._add_stationary_unit(pos)
         stability = self.STABILITY[uid]
         if   uid == UNIT_TYPE_TO_INDEX[FILTER]: 
+            self._add_stationary_unit(pos, attacking=False)
             self.stability_F[p] = self.STABILITY[uid]
         elif uid == UNIT_TYPE_TO_INDEX[ENCRYPTOR]:
+            self._add_stationary_unit(pos, attacking=False)
             self.stability_E[p] = self.STABILITY[uid]
         elif uid == UNIT_TYPE_TO_INDEX[DESTRUCTOR]:
-            self._add_destructor_contribution(game_state, [pos[0], pos[1]])
+            self._add_stationary_unit(pos, attacking=True)
+            self._add_destructor_contribution(pos)
             self.stability_D[p] = self.STABILITY[uid]
 
 
@@ -629,7 +646,10 @@ class Model:
                 UNIT_TYPE_TO_INDEX[ENCRYPTOR]]["shieldAmount"]
 
         # Stores tuples (x, y, r) of points from origin with distance r.
-        self.CIRCLE = transform.pos2_circle(self.RANGE[UNIT_TYPE_TO_INDEX[EMP]])
+        self.MAX_STATIONARY_RANGE = self.RANGE[UNIT_TYPE_TO_INDEX[EMP]]
+        self.CIRCLE = transform.pos2_circle(self.MAX_STATIONARY_RANGE)
+        self.CIRCLE_DESTRUCTOR = transform.pos2_circle(\
+                self.RANGE[UNIT_TYPE_TO_INDEX[DESTRUCTOR]])
 
 
     def readGameState(self, game_state):
@@ -638,6 +658,8 @@ class Model:
         self.cores_self = game_state.get_resource(game_state.CORES, 0)
         self.cores_enemy = game_state.get_resource(game_state.CORES, 1)
 
+        self.number_D_self = 0
+        self.number_D_enemy = 0
         # Primary attack trajectories
         self.primal_self = None
         self.primal_enemy = None
@@ -663,13 +685,15 @@ class Model:
                 if not unit.stationary: continue
 
                 
-                self._add_stationary_unit([x,y])
                 if unit.unit_type == FILTER:
+                    self._add_stationary_unit([x,y], attacking=False)
                     self.stability_F[p] = stability
                 elif unit.unit_type == ENCRYPTOR:
+                    self._add_stationary_unit([x,y], attacking=False)
                     self.stability_E[p] = stability
                 elif unit.unit_type == DESTRUCTOR:
-                    self._add_destructor_contribution(game_state, [x,y])
+                    self._add_stationary_unit([x,y], attacking=True)
+                    self._add_destructor_contribution((x,y))
                     self.stability_D[p] = stability
 
 
@@ -714,7 +738,10 @@ class Model:
         assert len(self.path1_enemy) == transform.ARENA_SIZE
         self.flag_pathOutdated = False
 
-    def _add_stationary_unit(self, pos):
+    def _add_stationary_unit(self, pos, attacking=True):
+        """
+        attacking: True if this unit is a destructor
+        """
         x, y = pos
         if transform.is_lowerHalf(y):
             for (i, j, r) in self.CIRCLE:
@@ -722,25 +749,34 @@ class Model:
                 p = transform.pos2_encode((x+i,y+j))
 
                 if r < self.proximity_self[p]:
-                    self.proximity_self[p] = r
+                    if attacking:
+                        self.proximity_self[p] = r
+                    else:
+                        self.proximity_self[p] = self.MAX_STATIONARY_RANGE
         else:
             for (i, j, r) in self.CIRCLE:
                 if not transform.pos2_inbound((x+i,y+j)): continue
                 p = transform.pos2_encode((x+i,y+j))
 
                 if r < self.proximity_enemy[p]:
-                    self.proximity_enemy[p] = r
+                    if attacking:
+                        self.proximity_enemy[p] = r
+                    else:
+                        self.proximity_enemy[p] = self.MAX_STATIONARY_RANGE
 
-    def _add_destructor_contribution(self, game_state: gamelib.GameState, pos):
-        li = game_state.game_map.get_locations_in_range(
-                pos, self.RANGE[UNIT_TYPE_TO_INDEX[DESTRUCTOR]])
+    def _add_destructor_contribution(self, pos):
+        (x, y) = pos
         if transform.is_lowerHalf(pos[1]):
-            for [x, y] in li:
-                p = transform.pos2_encode((x,y))
+            self.number_D_self += 1
+            for (dx, dy, r) in self.CIRCLE_DESTRUCTOR:
+                if not transform.pos2_inbound((x+dx,y+dy)): continue
+                p = transform.pos2_encode((x+dx,y+dy))
                 self.barrage_self[p] += 1
         else:
-            for [x, y] in li:
-                p = transform.pos2_encode((x,y))
+            self.number_D_enemy += 1
+            for (dx, dy, r) in self.CIRCLE_DESTRUCTOR:
+                if not transform.pos2_inbound((x+dx,y+dy)): continue
+                p = transform.pos2_encode((x+dx,y+dy))
                 self.barrage_enemy[p] += 1
 
     def ping_chase_emp(self):

@@ -347,19 +347,16 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         gamelib.debug_write('Servicing Primal.')
         n = len(path)
-        for i in reversed(range(n)):
-            if game_state.get_resource(game_state.CORES) \
-                    < self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]]:
-                # No more cores
-                return
+        k = int(game_state.get_resource(game_state.CORES) // self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]])
+        for i in range(n):
             x = path.px[i]
             y = path.py[i]
-            if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y]):
-                game_state.attempt_remove([[x+1,y]])
-            if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x-1, y]):
-                game_state.attempt_remove([[x-1,y]])
-            if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x, y+1]):
-                game_state.attempt_remove([[x,y+1]])
+            for (dx, dy) in [(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,1)]:
+                if k == 0:
+                    return
+                if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y]):
+                    k -= 1
+                    game_state.attempt_remove([[x+1,y]])
 
     def deployAttack(self, game_state, trajectory):
         """
@@ -373,7 +370,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         bits = game_state.get_resource(game_state.BITS)
 
         # Evaluate throughput using pings and emp.
-        nEMPs = 2
+        nEMPs = int(2 + self.m.number_D_enemy * 0.25)
         nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
 
         if nPings >= 5:
