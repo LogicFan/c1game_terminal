@@ -93,6 +93,9 @@ class AlgoStrategy(gamelib.AlgoCore):
         self.m.loadConfig(config)
         self.defense_init()
 
+        self.attack_stage = 0
+        self.attack_config = [] # (direction, attack_type, attack_num, support)
+
     def defense_init(self):
         # initialize defense needed variable, should be in on_game_start
 
@@ -143,6 +146,12 @@ class AlgoStrategy(gamelib.AlgoCore):
         
         if self.defense_basic_complete:
             self.defense_encryptor(game_state)
+        
+        self.defense_enhance(game_state)
+
+        self.attack_finish(game_state)
+        self.attack_action(game_state)
+        self.attack_prepare(game_state)
 
 #
 #        
@@ -263,6 +272,53 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def defense_enhance(self, game_state):
         pass
+    
+    def attack_prepare(self, game_state):
+        if self.attack_stage != 0:
+            return
+
+        # calculate the enemy defense level
+        # def enemy_defense_level(direction):
+        #     p1 = [[[0, 14]], 
+        #           [[27, 14]]]
+        #     p2 = 
+
+        # check conditon, change it later
+        if game_state.get_resource(game_state.BITS) > 12:
+            self.attack_config = [1, PING, 8, 4]
+        else:
+            return
+
+        prepare_list = [[[0, 13], [1, 13]], [[26, 13], [27, 13]]]
+        game_state.attempt_remove(prepare_list[self.attack_config[0]])
+        self.attack_stage = 1
+
+    def attack_action(self, game_state):
+        if self.attack_stage != 1:
+            return
+        
+        direction = self.attack_config[0]
+        unit_type = self.attack_config[1]
+        attack_num = self.attack_config[2]
+        supprot_num = self.attack_config[3]
+
+        support_list = [[19, 5], [8, 5]]
+        attack_list = [[20, 6], [7, 6]]
+        filter_list = [[21, 7], [6, 7]]
+
+        game_state.attempt_spawn(FILTER, filter_list[direction])
+        game_state.attempt_remove(filter_list[direction])
+        game_state.attempt_spawn(unit_type, support_list[direction], supprot_num)
+        game_state.attempt_spawn(unit_type, attack_list[direction], attack_num)
+        self.attack_stage = 2
+
+    def attack_finish(self, game_state):
+        if self.attack_stage != 2:
+            return
+        
+        edge_list = [[0, 13], [1, 13], [26, 13], [27, 13]]
+        game_state.attempt_spawn(FILTER, edge_list)
+        self.attack_stage = 0
 
     def servicePath(self, game_state, path):
         """
