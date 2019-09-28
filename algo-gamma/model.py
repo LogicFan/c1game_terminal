@@ -367,7 +367,9 @@ class Model:
                         self.stability_F[p] + \
                         self.stability_E[p] + \
                         self.stability_D[p]
-            path.pressure_dp[i] = max(path.pressure_dp[i], 0)
+
+            AMBIENT_PRESSURE = self.DAMAGE_F_EMP
+            path.pressure_dp[i] = max(path.pressure_dp[i], AMBIENT_PRESSURE)
 
         x_normal, y_normal = path.px[0], path.py[0]
         if player == 0:
@@ -405,7 +407,7 @@ class Model:
                 else:
                     return math.exp(x - m)
             l = [condexp(x - m) for x in l]
-            m2 = max(l)
+            m2 = sum(l)
             l = [x / m2 for x in l]
             return l
 
@@ -425,6 +427,8 @@ class Model:
         # Use weighted feasibility to get pressure field for the other player
         feas = [extract_feas(p) for p in self.path1_self]
         feas = softmax(feas)
+        if max(feas) <= 0.0:
+            gamelib.debug_write("Self path maximum feasibility = 0")
         for (f, path) in zip(feas, self.path1_self):
             if f <= 0: continue
             for i in range(len(path)):
@@ -447,6 +451,8 @@ class Model:
         # Use weighted feasibility to get pressure field for the other player
         feas = [extract_feas(p) for p in self.path1_enemy]
         feas = softmax(feas)
+        if max(feas) <= 0.0:
+            gamelib.debug_write("Enemy path maximum feasibility = 0")
         for (f, path) in zip(feas, self.path1_enemy):
             if f <= 0: continue
             for i in range(len(path)):
@@ -513,7 +519,7 @@ class Model:
             top_min_dis=100
             for path in total_path:
                 if not path: continue
-                end_dis=path.proximityTest(top_end,1)
+                end_dis=path.proximityTest(top_end,2)
                 if end_dis<=top_min_dis:
                     top_min_dis=end_dis
                     top_end_path=path
@@ -525,7 +531,7 @@ class Model:
             second_min_dis=100
             for path in total_path:
                 if not path: continue
-                end_dis=path.proximityTest(second_end,1)
+                end_dis=path.proximityTest(second_end,2)
                 if end_dis<=second_min_dis:
                     second_min_dis=end_dis
                     second_end_path=path
