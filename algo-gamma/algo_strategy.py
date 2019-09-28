@@ -269,7 +269,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             destructor_list.append(
                 (destructor_health(7 + i, 8), 7 + i, 8))
             destructor_list.append(
-                (destructor_health(20 - i, 8), 10 - i, 8))
+                (destructor_health(20 - i, 8), 20 - i, 8))
         
         destructor_list.sort(key = compare)
         gamelib.debug_write(json.dumps(destructor_list))
@@ -282,10 +282,10 @@ class AlgoStrategy(gamelib.AlgoCore):
                 break
 
         for unit in destructor_list:
-            game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
-            gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
             if game_state.get_resource(game_state.CORES) <= 10:
                 return
+            game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
+            gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
     
     def attack_prepare(self, game_state):
         if self.attack_stage != 0:
