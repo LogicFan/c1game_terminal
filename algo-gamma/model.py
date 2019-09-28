@@ -531,13 +531,11 @@ class Model:
 
         def allowpath(path):
             if path:
-                return path.dist_self < 5
+                return path.dist_self < 10
             else:
                 return True
         def path_index(path):
             if not path:
-                return 0
-            elif path.dist_self >= 5:
                 return 0
             else:
                 assert path.hazard >= 0
@@ -550,6 +548,8 @@ class Model:
         paths_right = path_collection[transform.HALF_ARENA:]
         paths_right = [x for x in paths_right if allowpath(x)]
         paths_right = sorted(paths_right, key=path_index)
+
+        gamelib.debug_write("Left paths: {}, Right paths: {}".format(len(paths_left), len(paths_right)))
 
         def getOptimal(col):
             if len(col) == 0:
@@ -593,9 +593,9 @@ class Model:
         #            second_end_path=path
 
         if path_l:
-            assert path_l.dist_self < 5
+            assert path_l.dist_self < 10
             if path_r:
-                assert path_r.dist_self < 5
+                assert path_r.dist_self < 10
             if path_r:
                 return (path_l, nScrambler), (path_r, nScrambler)
             else:
