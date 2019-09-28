@@ -141,6 +141,8 @@ class AlgoStrategy(gamelib.AlgoCore):
         game_state = gamelib.GameState(self.config, turn_state)
         gamelib.debug_write('Gamma version 1.3, turn {}'.format(game_state.turn_number))
 
+        self.m.clearTrajectory()
+
         if self.defense_start_list != []:
             self.defense_start(game_state)
         else:
@@ -173,7 +175,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         self.m.readPaths(game_state)
         self.m.analyseAttack()
         gamelib.debug_write('Calculated pressure for turn {}'.format(game_state.turn_number))
-        max_hazard_path = self.m.analyseReactive()
+        self.m.analyseReactive()
 
         assert not self.m.flag_pathOutdated
         # Must dump all statistics now. They get reset afterwards.

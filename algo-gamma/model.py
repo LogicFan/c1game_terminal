@@ -493,10 +493,10 @@ class Model:
         for (x,y) in path:
             if transform.is_lowerHalf(y):
                 self.prohibited_loc.add((x,y))
+    def clearTrajectory(self):
+        self.prohibited_loc = set()
 
     def analyseReactive(self):
-        max_hazard_path = None
-        max_hazard = float('-inf')
         for path in self.path1_self:
             if not path: continue
 
@@ -512,10 +512,6 @@ class Model:
                             + self.stability_D[p] * 2
                 path.hazard_dp[i] = self.pressure_enemy[p] - stability
                 path.hazard += path.hazard_dp[i]
-            if path.hazard > max_hazard:
-                max_hazard_path = path
-                max_hazard = path.hazard
-        return max_hazard_path
 
     def scrambler_protection(self):
         """
