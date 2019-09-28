@@ -285,11 +285,13 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         # check conditon, change it later
         if game_state.get_resource(game_state.BITS) > 12:
-            self.attack_config = [1, PING, 8, 4]
+            #this is a two-element list with tuples indicates the locations of
+            #pings and emps
+            attack_loc=self.m.ping_chase_emp()
         else:
             return
 
-        prepare_list = [[[0, 13], [1, 13]], [[26, 13], [27, 13]]]
+        
         game_state.attempt_remove(prepare_list[self.attack_config[0]])
         self.attack_stage = 1
 
