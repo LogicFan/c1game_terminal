@@ -107,13 +107,17 @@ class AlgoStrategy(gamelib.AlgoCore):
                 ]],
             # destructor wall
             [DESTRUCTOR, [
-                [1, 12], [26, 12], [2, 12], [25, 12],
-                [3, 12], [24, 12], [4, 11], [23, 11], [5, 10], [22, 10],
-                [6, 9], [21, 9], [8, 9], [19, 9], 
-                [9, 9], [18, 9], [10, 9], [17, 9], 
-                [12, 9], [15, 9], [13, 9], [14, 9]
+                # corner
+                [1, 12], [26, 12], [2, 12], [25, 12], [3, 12], [24, 12], 
+                # inclined
+                [4, 11], [23, 11], [5, 10], [22, 10], [7, 8], [20, 8],
+                # plane
+                [7, 8], [19, 8], [9, 8], [18, 8], [10, 8], [17, 8], 
+                [12, 8], [15, 8], [13, 8], [14, 8]
                 ]]
             ]
+
+        self.defense_door_list = [[6, 9], [21, 9], [11, 8], [16, 8]]
 
         # record any non-filter unit (remove or destuctor)
         self.defense_basic_dict = {} 
@@ -132,15 +136,15 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         if self.defense_start_list != []:
             self.defense_start(game_state)
-
-        # assume it is complete
-        self.defense_basic_complete = True        
-        self.defense_basic(game_state)
         
-        if self.defense_basic_complete:
-            self.defense_encryptor(game_state)
-        
-        self.defense_enhance(game_state)
+        # # assume it is complete
+        # self.defense_basic_complete = True        
+        # self.defense_basic(game_state)
+        # 
+        # if self.defense_basic_complete:
+        #     self.defense_encryptor(game_state)
+        # 
+        # self.defense_enhance(game_state)
 
         #self.attack_finish(game_state)
         #self.attack_action(game_state)
