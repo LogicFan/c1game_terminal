@@ -149,73 +149,69 @@ class AlgoStrategy(gamelib.AlgoCore):
         
         self.defense_enhance(game_state)
 
-        self.attack_finish(game_state)
-        self.attack_action(game_state)
-        self.attack_prepare(game_state)
+        #self.attack_finish(game_state)
+        #self.attack_action(game_state)
+        #self.attack_prepare(game_state)
 
-#
-#        
-#        gamelib.debug_write('Sampo turn {}'.format(game_state.turn_number))
-#        #game_state.suppress_warnings(True)  #Uncomment this line to suppress warnings.
-#
-#        if True: #game_state.turn_number == 0:
-#            self.deployDefenseInitial(game_state)
-#
-#        # Turn cycle:
-#        # 1. Analyse game state
-#        # 2. Obtain most feasible path for self & enemy
-#        # 3. Service self path & thwart enemy path
-#        # 4. Re-analyse game state
-#        # 5. Deploy defensive units
-#        self.m.readGameState(game_state)
-#
-#        self.m.readPaths(game_state)
-#        self.m.analyseAttack()
-#        max_hazard_path = self.m.analyseReactive()
-#
-#        assert not self.m.flag_pathOutdated
-#        # Must dump all statistics now. They get reset afterwards.
-#        if FILE_STABILITY_F:
-#            self.file_stability_F.write(transform.array_to_string(self.m.stability_F))
-#        if FILE_STABILITY_E:
-#            self.file_stability_E.write(transform.array_to_string(self.m.stability_E))
-#        if FILE_STABILITY_D:
-#            self.file_stability_D.write(transform.array_to_string(self.m.stability_D))
-#        if FILE_PRESSURE_SELF:
-#            self.file_pressure_self.write(transform.array_to_string(self.m.pressure_self))
-#        if FILE_PRESSURE_ENEMY:
-#            self.file_pressure_enemy.write(transform.array_to_string(self.m.pressure_enemy))
-#        if FILE_BARRAGE_SELF:
-#            self.file_barrage_self.write(transform.array_to_string(self.m.barrage_self))
-#        if FILE_BARRAGE_ENEMY:
-#            self.file_barrage_enemy.write(transform.array_to_string(self.m.barrage_enemy))
-#        if FILE_PROXIMITY_SELF:
-#            self.file_proximity_self.write(transform.array_to_string(self.m.proximity_self))
-#        if FILE_PROXIMITY_ENEMY:
-#            self.file_proximity_enemy.write(transform.array_to_string(self.m.proximity_enemy))
-#
-#        if FILE_PATH1_SELF:
-#            self.file_path1_self.write(model.Path.group_toBytes(self.m.path1_self))
-#        if FILE_PATH1_ENEMY:
-#            self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
-#
-#
-#        # Cache the trajectory so it does not get invalidated.
-#        trajectory = self.m.primal_self
-#
-#        self.servicePath(game_state, trajectory)
-#        self.deployDefence(game_state)
-#
-#        if trajectory:
-#            self.deployAttack(game_state, trajectory)
-#        if max_hazard_path:
-#            x0,y0 = max_hazard_path[0]
-#            game_state.attempt_spawn(SCRAMBLER, [x0, y0], 1)
-#            game_state.attempt_spawn(SCRAMBLER, [x0, y0], 1)
-#
-#        #self.m.readPaths(game_state)
-#
-#
+
+        
+        gamelib.debug_write('Sampo turn {}'.format(game_state.turn_number))
+        #game_state.suppress_warnings(True)  #Uncomment this line to suppress warnings.
+
+        if True: #game_state.turn_number == 0:
+            self.deployDefenseInitial(game_state)
+
+        # Turn cycle:
+        # 1. Analyse game state
+        # 2. Obtain most feasible path for self & enemy
+        # 3. Service self path & thwart enemy path
+        # 4. Re-analyse game state
+        # 5. Deploy defensive units
+        self.m.readGameState(game_state)
+
+        self.m.readPaths(game_state)
+        self.m.analyseAttack()
+        gamelib.debug_write('Calculated pressure for turn {}'.format(game_state.turn_number))
+        max_hazard_path = self.m.analyseReactive()
+
+        assert not self.m.flag_pathOutdated
+        # Must dump all statistics now. They get reset afterwards.
+        if FILE_STABILITY_F:
+            self.file_stability_F.write(transform.array_to_string(self.m.stability_F))
+        if FILE_STABILITY_E:
+            self.file_stability_E.write(transform.array_to_string(self.m.stability_E))
+        if FILE_STABILITY_D:
+            self.file_stability_D.write(transform.array_to_string(self.m.stability_D))
+        if FILE_PRESSURE_SELF:
+            self.file_pressure_self.write(transform.array_to_string(self.m.pressure_self))
+        if FILE_PRESSURE_ENEMY:
+            self.file_pressure_enemy.write(transform.array_to_string(self.m.pressure_enemy))
+        if FILE_BARRAGE_SELF:
+            self.file_barrage_self.write(transform.array_to_string(self.m.barrage_self))
+        if FILE_BARRAGE_ENEMY:
+            self.file_barrage_enemy.write(transform.array_to_string(self.m.barrage_enemy))
+        if FILE_PROXIMITY_SELF:
+            self.file_proximity_self.write(transform.array_to_string(self.m.proximity_self))
+        if FILE_PROXIMITY_ENEMY:
+            self.file_proximity_enemy.write(transform.array_to_string(self.m.proximity_enemy))
+
+        if FILE_PATH1_SELF:
+            self.file_path1_self.write(model.Path.group_toBytes(self.m.path1_self))
+        if FILE_PATH1_ENEMY:
+            self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
+
+
+        # Cache the trajectory so it does not get invalidated.
+        trajectory = self.m.primal_self
+
+        self.servicePath(game_state, trajectory)
+        self.deployDefence(game_state)
+
+        if trajectory:
+            self.deployAttack(game_state, trajectory)
+
+        #self.m.readPaths(game_state)
+
 
         game_state.submit_turn()
 
@@ -292,7 +288,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             return
 
         
-        game_state.attempt_remove(prepare_list[self.attack_config[0]])
+        #game_state.attempt_remove(prepare_list[self.attack_config[0]])
         self.attack_stage = 1
 
     def attack_action(self, game_state):
@@ -333,18 +329,14 @@ class AlgoStrategy(gamelib.AlgoCore):
         gamelib.debug_write('Servicing Primal.')
         n = len(path)
         for i in range(n):
-            if game_state.get_resource(game_state.CORES) < self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]]:
+            if game_state.get_resource(game_state.CORES) \
+                    < self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]]:
                 # No more cores
                 return
             x = path.px[i]
             y = path.py[i]
-            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y+1])
-            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x-1, y+1])
-
-            if transform.is_lowerHalf(x):
-                self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y])
-            else:
-                self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x-1, y])
+            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y])
+            self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x-1, y])
             self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x, y+1])
 
     def deployDefence(self, game_state):
@@ -371,7 +363,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         nPings_survive = self.m.evaluatePathThroughput(trajectory,
             UNIT_TYPE_TO_INDEX[PING], nPings)
         nEMP_survive = self.m.evaluatePathThroughput(trajectory,
-            UNIT_TYPE_TO_INDEX[PING], nEMPs)
+            UNIT_TYPE_TO_INDEX[EMP], nEMPs)
 
         if nEMP_survive >= 2:
             game_state.attempt_spawn(EMP, [x0, y0], nEMPs)
@@ -440,7 +432,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             gamelib.debug_write( \
                     '[spawnDefensiveUnit] Could not spwan at location {}'.format(location))
 
-        self.m.addUnit(location, ty)
+        self.m.addUnit(game_state, location, ty)
         self.m.resetPaths()
 
 if __name__ == "__main__":

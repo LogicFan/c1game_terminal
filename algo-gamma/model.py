@@ -558,7 +558,7 @@ class Model:
             cores = self.cores_self if player == 0 else self.cores_enemy
             return cores / self.COST[i]
 
-    def addUnit(self, pos, unittype):
+    def addUnit(self, game_state, pos, unittype):
         """
         Called by spawnDefensiveUnit only. Can only add points in friendly
         territory
@@ -654,7 +654,7 @@ class Model:
                 if not unit.stationary: continue
 
                 
-                self._add_stationary_unit(game_state, [x,y])
+                self._add_stationary_unit([x,y])
                 if unit.unit_type == FILTER:
                     self.stability_F[p] = stability
                 elif unit.unit_type == ENCRYPTOR:
@@ -705,7 +705,7 @@ class Model:
         assert len(self.path1_enemy) == transform.ARENA_SIZE
         self.flag_pathOutdated = False
 
-    def _add_stationary_unit(self, game_state: gamelib.GameState, pos):
+    def _add_stationary_unit(self, pos):
         x, y = pos
         if transform.is_lowerHalf(y):
             for (i, j, r) in self.CIRCLE:

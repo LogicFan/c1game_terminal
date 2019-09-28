@@ -4,10 +4,10 @@ import numpy
 import sys, os
 import array
 import random
+import traceback
 
 import transform
 import model
-import algo_strategy as AL
 
 
 
@@ -103,18 +103,32 @@ class DiscreteSlider(widgets.Slider):
 def interactive_ui(base_path: str):
     # Load all array file
     print("Loading data")
-    stability_F     = _load_field_from_file(base_path + '/' + AL.FILE_STABILITY_F)
-    stability_E     = _load_field_from_file(base_path + '/' + AL.FILE_STABILITY_E)
-    stability_D     = _load_field_from_file(base_path + '/' + AL.FILE_STABILITY_D)
-    pressure_self   = _load_field_from_file(base_path + '/' + AL.FILE_PRESSURE_SELF)
-    pressure_enemy  = _load_field_from_file(base_path + '/' + AL.FILE_PRESSURE_ENEMY)
-    barrage_self    = _load_field_from_file(base_path + '/' + AL.FILE_BARRAGE_SELF)
-    barrage_enemy   = _load_field_from_file(base_path + '/' + AL.FILE_BARRAGE_ENEMY)
-    proximity_self  = _load_field_from_file(base_path + '/' + AL.FILE_PROXIMITY_SELF)
-    proximity_enemy = _load_field_from_file(base_path + '/' + AL.FILE_PROXIMITY_ENEMY)
 
-    path1_self = _load_paths_from_file(base_path + '/' + AL.FILE_PATH1_SELF)
-    path1_enemy = _load_paths_from_file(base_path + '/' + AL.FILE_PATH1_ENEMY)
+    FILE_STABILITY_F     = "sampo.stability_f.array"
+    FILE_STABILITY_E     = "sampo.stability_e.array"
+    FILE_STABILITY_D     = "sampo.stability_d.array"
+    FILE_PRESSURE_SELF   = "sampo.pressure_self.array"
+    FILE_PRESSURE_ENEMY  = "sampo.pressure_enemy.array"
+    FILE_BARRAGE_SELF    = "sampo.barrage_self.array"
+    FILE_BARRAGE_ENEMY   = "sampo.barrage_enemy.array"
+    FILE_PROXIMITY_SELF  = "sampo.proximity_self.array"
+    FILE_PROXIMITY_ENEMY = "sampo.proximity_enemy.array"
+
+    FILE_PATH1_SELF      = "sampo.path1_self.array"
+    FILE_PATH1_ENEMY     = "sampo.path1_enemy.array"
+
+    stability_F     = _load_field_from_file(base_path + '/' + FILE_STABILITY_F)
+    stability_E     = _load_field_from_file(base_path + '/' + FILE_STABILITY_E)
+    stability_D     = _load_field_from_file(base_path + '/' + FILE_STABILITY_D)
+    pressure_self   = _load_field_from_file(base_path + '/' + FILE_PRESSURE_SELF)
+    pressure_enemy  = _load_field_from_file(base_path + '/' + FILE_PRESSURE_ENEMY)
+    barrage_self    = _load_field_from_file(base_path + '/' + FILE_BARRAGE_SELF)
+    barrage_enemy   = _load_field_from_file(base_path + '/' + FILE_BARRAGE_ENEMY)
+    proximity_self  = _load_field_from_file(base_path + '/' + FILE_PROXIMITY_SELF)
+    proximity_enemy = _load_field_from_file(base_path + '/' + FILE_PROXIMITY_ENEMY)
+
+    path1_self = _load_paths_from_file(base_path + '/' + FILE_PATH1_SELF)
+    path1_enemy = _load_paths_from_file(base_path + '/' + FILE_PATH1_ENEMY)
 
     nTurns = len(stability_F)
     print("Turns: {}".format(nTurns))
@@ -357,7 +371,7 @@ if __name__ == '__main__':
         try:
             interactive_ui(args.path)
         except Exception as e:
-            print(e)
+            traceback.print_exc()
             print("Caught error ... Exiting")
     else:
         print("Unknown mode : %s" % args.mode)
