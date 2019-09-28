@@ -1,5 +1,5 @@
+import array, math
 import transform
-import array
 import gamelib
 
 class Policy:
@@ -17,6 +17,8 @@ class Policy:
         self.w_pos_y      = -5   # Favour of edge (+) vs center (-)
 
         self.damage_bias  = 1.1
+        # How many stability points per health point?
+        self.ratio_health_stab = 100 
 
 
 class Path:
@@ -51,6 +53,7 @@ class Path:
 
         self.hazard_dp = array.array('f', [0] * l)
         self.hazard = 0
+        self.pressure_dp = array.array('f', [0] * l)
         self.analysed_defense = False
 
         if player == 0:
@@ -99,7 +102,7 @@ class Path:
         """
         result = 0
         for pos in self:
-            p = pos2_encode(pos)
+            p = transform.pos2_encode(pos)
             result += field(p)
         return result
 
@@ -113,7 +116,7 @@ class Path:
     @property
     def isDeadend(self):
         """
-        True if path ends in 
+        True if path ends in the formation of its deploying player.
         """
         if transform.is_lowerHalf(self.py[0]):
             return transform.is_lowerHalf(self.py[-1] + 1)
@@ -202,7 +205,7 @@ class Model:
     3. analyseAttack
 
        Determine the order 2 parameters of each path, including
-       feasibility
+       feasibility, pressure
 
     4. analyseDefense
 
@@ -214,7 +217,11 @@ class Model:
         self.stability_F = array.array('f', [0] * transform.ARENA_VOL)
         self.stability_E = array.array('f', [0] * transform.ARENA_VOL)
         self.stability_D = array.array('f', [0] * transform.ARENA_VOL)
-        # Pressure field obtained by path extension
+        #
+        # Pressure field represents the expected total damage when
+        # 1. The enemy randomly samples a path
+        # 2. The enemy deploys all bits in the form of EMP's
+        #
         self.pressure_self  = array.array('f', [0] * transform.ARENA_VOL)
         self.pressure_enemy = array.array('f', [0] * transform.ARENA_VOL)
         # Attack ranges of decryptors
@@ -290,9 +297,9 @@ class Model:
     
     ### State Evaluation Functions ###
 
-    def _evaluatePath(self, path):
+    def _evaluatePath(self, path, nEMP: int = 1):
         """
-        Populate the damage field of the path.
+        Populate the shield,damage field of the path. Populate pressure field.
         """
         if not path:
             # Path starts from a occupied unit.
@@ -310,14 +317,18 @@ class Model:
             return path.feasibility
 
         # Get list of encryptors
-        if player == 0:
-            encs = self.li_encryptors_self.copy()
-        else:
-            encs = self.li_encryptors_enemy.copy()
+        if player == 0: encs = self.li_encryptors_self.copy()
+        else:           encs = self.li_encryptors_enemy.copy()
+
+        EMP_STABILITY = self.STABILITY[UNIT_TYPE_TO_INDEX[EMP]]
+        EMP_SPEED     = self.SPEED[UNIT_TYPE_TO_INDEX[EMP]]
+        EMP_RANGE     = self.RANGE[UNIT_TYPE_TO_INDEX[EMP]]
+
         n = len(path)
         for i in range(n):
             x = path.px[i]
             y = path.py[i]
+            p = transform.pos2_encode((x,y))
 
             # Filter the encs list
             ne = len(encs)
@@ -328,7 +339,6 @@ class Model:
             path.shield_dp[i] = shield
             path.shield += shield
 
-            p = transform.pos2_encode((x,y))
             # Enemy destructor
             if player == 0: damage = self.barrage_enemy[p]
             else:           damage = self.barrage_self[p]
@@ -339,6 +349,12 @@ class Model:
                 path.dist_self += 1
             else:
                 path.dist_enemy += 1
+
+            nEMP += shield / EMP_STABILITY
+            nEMP -= damage / EMP_STABILITY / EMP_SPEED
+
+            # Currently not taking proximity into account.
+            path.pressure_dp[i] = max(nEMP * self.DAMAGE_F_EMP, 0)
 
         x_normal, y_normal = path.px[0], path.py[0]
         if player == 0:
@@ -360,32 +376,72 @@ class Model:
         # Find optimal path for self and enemy
         p_self = None
         f_self = float('-inf')
+
+        def extract_feas(p):
+            if p == None: return float('-inf')
+            else:         return p.feasibility
+        def softmax(l: list):
+            SOFTMAX_COMPRESS = 10
+            l = [x / SOFTMAX_COMPRESS for x in l]
+            m = max(l)
+            if m == float('-inf'):
+                return [0] * len(l)
+            def condexp(x):
+                if x == float('-inf'):
+                    return 0
+                else:
+                    return math.exp(x - m)
+            l = [condexp(x - m) for x in l]
+            m2 = max(l)
+            l = [x / m2 for x in l]
+            return l
+
+
+        # Max # EMP spawnable
+        maxemp_self = self.getNUnitsAffordable(EMP, player=0)
         for path in self.path1_self:
             if not path: continue
 
-            f = self._evaluatePath(path)
+            f = self._evaluatePath(path, maxemp_self)
             path.analysed_attack = True
-            for [x2,y2] in path:
-                p2 = transform.pos2_encode((x2, y2))
-                self.pressure_self[p2] += f
             if f > f_self:
                 #gamelib.debug_write("New max: {} at {}".format(f, path.px[0]))
                 f_self = f
                 p_self = path
 
+        # Use weighted feasibility to get pressure field for the other player
+        feas = [extract_feas(p) for p in self.path1_self]
+        feas = softmax(feas)
+        for (f, path) in zip(feas, self.path1_self):
+            if f <= 0: continue
+            for i in range(len(path)):
+                # Calculate contribution
+                x,y = path[i]
+                p = transform.pos2_encode((x,y))
+                self.pressure_enemy[p] += path.pressure_dp[i] * f
+
         p_enemy = None
         f_enemy = float('-inf')
+        maxemp_enemy = self.getNUnitsAffordable(EMP, player=1)
         for path in self.path1_enemy:
             if not path: continue
 
-            f = self._evaluatePath(path)
+            f = self._evaluatePath(path, maxemp_self)
             path.analysed_attack = True
-            for [x2,y2] in path:
-                p2 = transform.pos2_encode((x2, y2))
-                self.pressure_enemy[p2] += f
             if f > f_enemy:
                 f_enemy = f
                 p_enemy = path
+        # Use weighted feasibility to get pressure field for the other player
+        feas = [extract_feas(p) for p in self.path1_enemy]
+        feas = softmax(feas)
+        for (f, path) in zip(feas, self.path1_enemy):
+            if f <= 0: continue
+            for i in range(len(path)):
+                # Calculate contribution
+                x,y = path[i]
+                p = transform.pos2_encode((x,y))
+                self.pressure_self[p] += path.pressure_dp[i] * f
+
         self.primal_self = p_self
         self.primal_enemy = p_enemy
 
@@ -423,6 +479,70 @@ class Model:
                 max_hazard = path.hazard
         return max_hazard_path
 
+    def scrambler_protection(self):
+        path_collection = self.path1_self
+        path_index = []
+        for path in path_collection:
+            if not path:
+                path_index.append(0)
+            else:
+                path_index.append(path.hazard)
+        sorted_path_collection = [x for _,x in sorted(zip(path_index,path_collection))]
+
+        top_path    = sorted_path_collection[-1]
+        second_path = sorted_path_collection[-2]
+        
+        if top_path:
+            for pos in top_path:
+                if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
+                    top_end=pos
+            total_path=self.path1_self
+            top_min_dis=100
+            top_end_path=None
+            for i in total_path:
+                end_dis=i.proximityTest(top_end,1)
+                if end_dis<=top_min_dis:
+                    top_min_dis=end_dis
+                    top_end_path=i
+        if second_path:
+            for pos in second_path:
+                if pos[1]>=min(transform.HALF_ARENA,top_path[-1][1]):
+                    second_end=pos
+            second_min_dis=100
+            second_end_path=None
+            for i in total_path:
+                end_dis=i.proximityTest(second_end,1)
+                if end_dis<=second_min_dis:
+                    second_min_dis=end_dis
+                    second_end_path=i
+
+        nEMP = int(self.bits_enemy // self.COST[UNIT_TYPE_TO_INDEX[EMP]])
+        if top_end_path:
+            tuple1 = (top_end_path[0], nEMP)
+        else:
+            tuple1 = (None, 0)
+        if second_end_path:
+            tuple2 = (second_end_path[0], int(nEMP // 2))
+        else:
+            tuple2 = (None, 0)
+
+        return [tuple1, tuple2]
+
+
+
+    def getNUnitsAffordable(self, ty, player: int):
+        """
+        Returns a fuzzy number, i.e. can return 2.5 units.
+        """
+        i = UNIT_TYPE_TO_INDEX[ty]
+        if i <= 2:
+            # Defense
+            bits = self.bits_self if player == 0 else self.bits_enemy
+            return bits / self.COST[i]
+        else:
+            # Attack
+            cores = self.cores_self if player == 0 else self.cores_enemy
+            return cores / self.COST[i]
 
 
 
@@ -446,10 +566,13 @@ class Model:
         UNIT_TYPE_TO_INDEX[EMP]        = 4
         UNIT_TYPE_TO_INDEX[SCRAMBLER]  = 5
 
-        self.COST = [0] * 6
-        self.RANGE = [0] * 6
+        self.COST      = [0] * 6
+        self.RANGE     = [0] * 6
         self.STABILITY = [0] * 6
-        self.SPEED = [0] * 6
+        self.SPEED     = [0] * 6
+
+        self.DAMAGE_F_EMP = config["unitInformation"][ \
+                UNIT_TYPE_TO_INDEX[EMP]]["damageF"]
 
         for idx in [FILTER,ENCRYPTOR,DESTRUCTOR,PING,EMP,SCRAMBLER]:
             i = UNIT_TYPE_TO_INDEX[idx]
@@ -580,6 +703,39 @@ class Model:
                 p = transform.pos2_encode((x,y))
                 self.barrage_enemy[p] += 1
 
+    def ping_chase_emp(self):
+        path_collection=self.path1_self
+        max_fea_path=None
+        max_fea=-1
+        for path in path_collection:
+            if not path:
+                max_fea_path=None
+            else:
+                if max_fea<=path.feasibility:
+                    max_fea_path=path
+                    max_fea=path.feasibility
+        ping_path=max_fea_path
+        ping_loc=ping_path[0]
+        ping_dist=ping_path.dist_self
+        target_loc=ping_path[-ping_dist]
+        emp_dist=ping_dist*self.SPEED[UNIT_TYPE_TO_INDEX[EMP]]//self.SPEED[UNIT_TYPE_TO_INDEX[PING]]
+        emp_loc=None
+        for path in path_collection:
+            if not path:
+                emp_loc=ping_loc
+            else:
+                if target_loc in path:
+                    if path[emp_dist-1] == target_loc:
+                        emp_loc=path[0]
+        given_res=self.bits_self
+        if given_res-2*self.COST[UNIT_TYPE_TO_INDEX[EMP]]>0:
+            num_of_emp=2
+            num_of_ping=int((given_res-2*self.COST[UNIT_TYPE_TO_INDEX[EMP]])//self.COST[UNIT_TYPE_TO_INDEX[PING]])
+        else:
+            num_of_emp=0
+            num_of_ping=0
+            
+        return [(ping_loc,num_of_ping),(emp_loc,num_of_emp)]
 
 if __name__ == '__main__':
     def test_equal(a, b):
