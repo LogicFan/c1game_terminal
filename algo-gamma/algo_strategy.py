@@ -143,10 +143,10 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         if self.defense_start_list != []:
             self.defense_start(game_state)
+        else:
+            self.defense_conner(game_state)
+            self.defense_basic(game_state) 
         
-        # assume it is complete
-        self.defense_basic_complete = True        
-        self.defense_basic(game_state)
         # 
         # if self.defense_basic_complete:
         #     self.defense_encryptor(game_state)
@@ -235,6 +235,10 @@ class AlgoStrategy(gamelib.AlgoCore):
                     return
         # all unit successfully spawned, set defense_start_list to be empty
         self.defense_start_list = []
+    def defense_conner(self, game_state):
+        for i in range(0, 3):
+            game_state.attempt_spawn(FILTER, [0 + i, 13])
+            game_state.attempt_spawn(FILTER, [27 + i, 13])
 
     def defense_basic(self, game_state):
         gamelib.debug_write('defense_basic')
@@ -255,7 +259,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             destructor_list.append(
                 (destructor_health(1 + i, 12), 1 + i, 12))
             destructor_list.append(
-                (destructor_health(26 - i, 12), 12 - i, 12))
+                (destructor_health(26 - i, 12), 26 - i, 12))
         for i in range(0, 2):
             destructor_list.append(
                 (destructor_health(4 + i, 11 - i), 4 + i, 11 - i))
@@ -268,30 +272,21 @@ class AlgoStrategy(gamelib.AlgoCore):
                 (destructor_health(20 - i, 8), 10 - i, 8))
         
         destructor_list.sort(key = compare)
+        gamelib.debug_write(json.dumps(destructor_list))
 
         for unit in destructor_list:
             if unit[0] == 0:
                 game_state.attempt_spawn(DESTRUCTOR, [unit[1], unit[2]])
+                gamelib.debug_write("D location {}, {}".format(unit[1], unit[2]))
             else:
                 break
 
         for unit in destructor_list:
             if unit[0] < 0.5 * self.m.STABILITY[UNIT_TYPE_TO_INDEX[DESTRUCTOR]]:
                 game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
+                gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
             else:
                 break
-        
-        
-
-    def defense_encryptor(self, game_state):
-        for i in range(0, 4):
-            if game_state.attempt_spawn(ENCRYPTOR, [7 + i, 8 - i]) == 1:
-                return
-            if game_state.attempt_spawn(ENCRYPTOR, [20 - i, 8 - i]) == 1:
-                return
-
-    def defense_enhance(self, game_state):
-        pass
     
     def attack_prepare(self, game_state):
         if self.attack_stage != 0:

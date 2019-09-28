@@ -6,7 +6,7 @@
         {
             "label": "play with default player",
             "type": "shell",
-            "command": "java -jar engine.jar work ./python-algo-default/run.ps1 ./algo-gamma/run.ps1",
+            "command": "java -jar engine.jar work ./algo-gamma/run.ps1 ./python-algo-default/run.ps1",
             "group": {
                 "kind": "build",
                 "isDefault": true
