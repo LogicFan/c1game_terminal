@@ -220,7 +220,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
 
 
-        if game_state.turn_number <= 2:
+        if game_state.turn_number < 3:
             scram1 = None
             scram_n1 = 0
             scram2 = None
