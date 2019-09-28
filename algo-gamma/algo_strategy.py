@@ -151,9 +151,6 @@ class AlgoStrategy(gamelib.AlgoCore):
         gamelib.debug_write('Sampo turn {}'.format(game_state.turn_number))
         #game_state.suppress_warnings(True)  #Uncomment this line to suppress warnings.
 
-        if True: #game_state.turn_number == 0:
-            self.deployDefenseInitial(game_state)
-
         # Turn cycle:
         # 1. Analyse game state
         # 2. Obtain most feasible path for self & enemy
@@ -321,7 +318,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         gamelib.debug_write('Servicing Primal.')
         n = len(path)
-        for i in range(n):
+        for i in reversed(range(n)):
             if game_state.get_resource(game_state.CORES) \
                     < self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]]:
                 # No more cores
@@ -353,15 +350,15 @@ class AlgoStrategy(gamelib.AlgoCore):
         nPings = int(bits // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
         nEMPs  = int(bits // self.m.COST[UNIT_TYPE_TO_INDEX[EMP]])
 
-        nPings_survive = self.m.evaluatePathThroughput(trajectory,
-            UNIT_TYPE_TO_INDEX[PING], nPings)
+        #nPings_survive = self.m.evaluatePathThroughput(trajectory,
+        #    UNIT_TYPE_TO_INDEX[PING], nPings)
         nEMP_survive = self.m.evaluatePathThroughput(trajectory,
             UNIT_TYPE_TO_INDEX[EMP], nEMPs)
 
-        if nEMP_survive >= 2:
-            game_state.attempt_spawn(EMP, [x0, y0], nEMPs)
-        elif nPings_survive >= 4:
-            game_state.attempt_spawn(PING, [x0, y0], nPings)
+        if nEMP_survive >= 5:
+            game_state.attempt_spawn(EMP, [x0, y0], int(nEMPs))
+        #elif nPings_survive >= 4:
+        #    game_state.attempt_spawn(PING, [x0, y0], int(nPings))
 
 
     def deployDefenseInitial(self, game_state):
