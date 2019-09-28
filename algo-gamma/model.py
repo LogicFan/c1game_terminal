@@ -536,14 +536,15 @@ class Model:
                     second_min_dis=end_dis
                     second_end_path=path
 
-        nEMP = int(self.bits_enemy // self.COST[UNIT_TYPE_TO_INDEX[EMP]] // 2)
+        # number of scramblers in each path
+        nScrambler = int(max(self.bits_enemy // 10, 1))
         if top_end_path:
-            tuple1 = (top_end_path[0], 1)
+            tuple1 = (top_end_path[0], nScrambler)
             #tuple1 = (top_end_path[0], nEMP)
         else:
             tuple1 = (None, 0)
         if second_end_path:
-            tuple2 = (second_end_path[0], 1)
+            tuple2 = (second_end_path[0], nScrambler)
             #tuple2 = (second_end_path[0], int(nEMP // 2))
         else:
             tuple2 = (None, 0)
