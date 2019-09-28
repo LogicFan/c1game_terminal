@@ -202,19 +202,26 @@ class AlgoStrategy(gamelib.AlgoCore):
             self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
 
 
-        (scram_p1, scram_n1), (scram_p2, scram_n2) = self.m.scrambler_protection()
+        (scram1, scram_n1), (scram2, scram_n2) = self.m.scrambler_protection()
         if scram_n1:
-            game_state.attempt_spawn(SCRAMBLER, [scram_p1[0], scram_p1[1]], scram_n1)
+            x,y = scram1[0]
+            self.m.markTrajectory(scram1)
+            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n1)
         if scram_n2:
-            game_state.attempt_spawn(SCRAMBLER, [scram_p2[0], scram_p2[1]], scram_n2)
+            x,y = scram2[0]
+            self.m.markTrajectory(scram2)
+            game_state.attempt_spawn(SCRAMBLER, [x,y], scram_n2)
 
         # Cache the trajectory so it does not get invalidated.
         trajectory = self.m.primal_self
 
+
         if trajectory:
+            self.m.markTrajectory(trajectory)
             flag = self.deployAttack(game_state, trajectory)
             if flag:
-                self.servicePath(game_state, trajectory)
+                self.servicePath(game_state, trajectory, cores_remain=4)
+
 
         #self.m.readPaths(game_state)
 
@@ -336,7 +343,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         game_state.attempt_spawn(FILTER, edge_list)
         self.attack_stage = 0
 
-    def servicePath(self, game_state, path):
+    def servicePath(self, game_state, path, cores_remain: int):
         """
         Build encryptors to service the primary path
         """
@@ -345,17 +352,19 @@ class AlgoStrategy(gamelib.AlgoCore):
             return
 
         gamelib.debug_write('Servicing Primal.')
+
+        cores = game_state.get_resource(game_state.CORES) - cores_remain
         n = len(path)
-        k = int(game_state.get_resource(game_state.CORES) // self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]])
+        k = int(cores // self.m.COST[UNIT_TYPE_TO_INDEX[ENCRYPTOR]])
         for i in range(n):
             x = path.px[i]
             y = path.py[i]
             for (dx, dy) in [(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,1)]:
                 if k == 0:
                     return
-                if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+1, y]):
+                if self.spawnDefensiveUnit(game_state, ENCRYPTOR, [x+dx, y+dy]):
                     k -= 1
-                    game_state.attempt_remove([[x+1,y]])
+                    game_state.attempt_remove([[x+dx,y+dy]])
 
     def deployAttack(self, game_state, trajectory):
         """
@@ -427,7 +436,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def spawnDefensiveUnit(self, game_state, ty, location):
         """
-        Must use this function to spawn defensive unit since it corrects the
+        Must use this function to spawn defensive unit since it consults the
         model.
         """
         assert type(location) == list
@@ -450,7 +459,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                     '[spawnDefensiveUnit] Could not spwan at location {}'.format(location))
             return False
 
-        self.m.addUnit(game_state, location, ty)
+        #self.m.addUnit(game_state, location, ty)
         self.m.resetPaths()
         return True
 

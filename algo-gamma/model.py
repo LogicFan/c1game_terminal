@@ -486,10 +486,11 @@ class Model:
             gamelib.debug_write('[Model] Primal Path start at [{}, {}]'.format(
                 self.primal_self.px[0], self.primal_self.py[0]))
 
-        n = len(self.primal_self)
-        for i in range(n):
-            x = self.primal_self.px[i]
-            y = self.primal_self.py[i]
+    def markTrajectory(self, path):
+        if not path:
+            return
+
+        for (x,y) in path:
             if transform.is_lowerHalf(y):
                 self.prohibited_loc.add((x,y))
 
@@ -504,9 +505,11 @@ class Model:
                 x2, y2 = path[i]
                 p = transform.pos2_encode((x2, y2))
 
-                stability = self.stability_F[p] \
-                        + self.stability_F[p] \
-                        + self.stability_D[p]
+                stability = 0
+                for (dx, dy) in [(0,1),(0,-1),(1,0),(-1,0)]:
+                    stability += self.stability_F[p] \
+                            + self.stability_E[p] \
+                            + self.stability_D[p] * 2
                 path.hazard_dp[i] = self.pressure_enemy[p] - stability
                 path.hazard += path.hazard_dp[i]
             if path.hazard > max_hazard:
@@ -515,6 +518,9 @@ class Model:
         return max_hazard_path
 
     def scrambler_protection(self):
+        """
+        Return ((path, number), (path, number)) for scramblers
+        """
         path_collection = self.path1_self
 
         def path_index(path):
@@ -554,12 +560,12 @@ class Model:
         # number of scramblers in each path
         nScrambler = int(max(self.bits_enemy // 10, 1))
         if top_end_path:
-            tuple1 = (top_end_path[0], nScrambler)
+            tuple1 = (top_end_path, nScrambler)
             #tuple1 = (top_end_path[0], nEMP)
         else:
             tuple1 = (None, 0)
         if second_end_path:
-            tuple2 = (second_end_path[0], nScrambler)
+            tuple2 = (second_end_path, nScrambler)
             #tuple2 = (second_end_path[0], int(nEMP // 2))
         else:
             tuple2 = (None, 0)
