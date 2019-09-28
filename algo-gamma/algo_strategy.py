@@ -226,8 +226,8 @@ class AlgoStrategy(gamelib.AlgoCore):
 
 
         #self.m.readPaths(game_state)
-
-        self.close_door(game_state)
+        if game_state.get_resource(game_state.BITS, 1) >= 10:
+            self.close_door(game_state)
         game_state.submit_turn()
 
     def defense_start(self, game_state):
