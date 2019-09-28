@@ -7,6 +7,7 @@ import sys
 import array
 import transform
 import model
+import json
 
 
 if True:
@@ -91,7 +92,36 @@ class AlgoStrategy(gamelib.AlgoCore):
         UNIT_TYPE_TO_INDEX[SCRAMBLER] = 5
 
         self.m.loadConfig(config)
+        self.defense_init()
 
+    def defense_init(self):
+        # initialize defense needed variable, should be in on_game_start
+
+        # variable for defense_start
+        self.defense_start_list = [
+            # corner protection
+            [FILTER, [
+                [0, 13], [27, 13], [1, 13], [26, 13], [2, 13], [25, 13]
+                ]],
+            # basic destructor
+            [DESTRUCTOR, [
+                [4, 12], [23, 12], [10, 10], [17, 10]
+                ]],
+            # protect destructor
+            [FILTER, [
+                [4, 13], [23, 13], [10, 11], [17, 11], [5, 12], [22, 12] 
+                ]],
+            # filter wall
+            [FILTER, [
+                [3, 12], [24, 12], [4, 11], [23, 11], [5, 10], [22, 10],
+                [6, 9], [21, 9], [7, 9], [20, 9], [8, 9], [19, 9], 
+                [9, 9], [18, 9], [10, 9], [17, 9], [11, 9], [16, 9], 
+                [12, 9], [15, 9], [13, 9], [14, 9]
+                ]]
+            ]
+
+        # record any non-filter unit (remove or destuctor)
+        self.defense_basic_dict = {} 
 
     def on_turn(self, turn_state):
         """
@@ -102,70 +132,102 @@ class AlgoStrategy(gamelib.AlgoCore):
         game engine.
         """
         game_state = gamelib.GameState(self.config, turn_state)
-        gamelib.debug_write('Sampo turn {}'.format(game_state.turn_number))
-        #game_state.suppress_warnings(True)  #Uncomment this line to suppress warnings.
+        gamelib.debug_write('Gamma version 1.0, turn {}'.format(game_state.turn_number))
 
-        if True: #game_state.turn_number == 0:
-            self.deployDefenseInitial(game_state)
+        if self.defense_start_list != []:
+            self.defense_start(game_state)
 
-        # Turn cycle:
-        # 1. Analyse game state
-        # 2. Obtain most feasible path for self & enemy
-        # 3. Service self path & thwart enemy path
-        # 4. Re-analyse game state
-        # 5. Deploy defensive units
-        self.m.readGameState(game_state)
-
-        self.m.readPaths(game_state)
-        self.m.analyseAttack()
-        max_hazard_path = self.m.analyseReactive()
-
-        assert not self.m.flag_pathOutdated
-        # Must dump all statistics now. They get reset afterwards.
-        if FILE_STABILITY_F:
-            self.file_stability_F.write(transform.array_to_string(self.m.stability_F))
-        if FILE_STABILITY_E:
-            self.file_stability_E.write(transform.array_to_string(self.m.stability_E))
-        if FILE_STABILITY_D:
-            self.file_stability_D.write(transform.array_to_string(self.m.stability_D))
-        if FILE_PRESSURE_SELF:
-            self.file_pressure_self.write(transform.array_to_string(self.m.pressure_self))
-        if FILE_PRESSURE_ENEMY:
-            self.file_pressure_enemy.write(transform.array_to_string(self.m.pressure_enemy))
-        if FILE_BARRAGE_SELF:
-            self.file_barrage_self.write(transform.array_to_string(self.m.barrage_self))
-        if FILE_BARRAGE_ENEMY:
-            self.file_barrage_enemy.write(transform.array_to_string(self.m.barrage_enemy))
-        if FILE_PROXIMITY_SELF:
-            self.file_proximity_self.write(transform.array_to_string(self.m.proximity_self))
-        if FILE_PROXIMITY_ENEMY:
-            self.file_proximity_enemy.write(transform.array_to_string(self.m.proximity_enemy))
-
-        if FILE_PATH1_SELF:
-            self.file_path1_self.write(model.Path.group_toBytes(self.m.path1_self))
-        if FILE_PATH1_ENEMY:
-            self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
-
-
-        # Cache the trajectory so it does not get invalidated.
-        trajectory = self.m.primal_self
-
-        self.servicePath(game_state, trajectory)
-        self.deployDefence(game_state)
-
-        if trajectory:
-            self.deployAttack(game_state, trajectory)
-        if max_hazard_path:
-            x0,y0 = max_hazard_path[0]
-            game_state.attempt_spawn(SCRAMBLER, [x0, y0], 1)
-            game_state.attempt_spawn(SCRAMBLER, [x0, y0], 1)
-
-        #self.m.readPaths(game_state)
-
-
+#
+#        
+#        gamelib.debug_write('Sampo turn {}'.format(game_state.turn_number))
+#        #game_state.suppress_warnings(True)  #Uncomment this line to suppress warnings.
+#
+#        if True: #game_state.turn_number == 0:
+#            self.deployDefenseInitial(game_state)
+#
+#        # Turn cycle:
+#        # 1. Analyse game state
+#        # 2. Obtain most feasible path for self & enemy
+#        # 3. Service self path & thwart enemy path
+#        # 4. Re-analyse game state
+#        # 5. Deploy defensive units
+#        self.m.readGameState(game_state)
+#
+#        self.m.readPaths(game_state)
+#        self.m.analyseAttack()
+#        max_hazard_path = self.m.analyseReactive()
+#
+#        assert not self.m.flag_pathOutdated
+#        # Must dump all statistics now. They get reset afterwards.
+#        if FILE_STABILITY_F:
+#            self.file_stability_F.write(transform.array_to_string(self.m.stability_F))
+#        if FILE_STABILITY_E:
+#            self.file_stability_E.write(transform.array_to_string(self.m.stability_E))
+#        if FILE_STABILITY_D:
+#            self.file_stability_D.write(transform.array_to_string(self.m.stability_D))
+#        if FILE_PRESSURE_SELF:
+#            self.file_pressure_self.write(transform.array_to_string(self.m.pressure_self))
+#        if FILE_PRESSURE_ENEMY:
+#            self.file_pressure_enemy.write(transform.array_to_string(self.m.pressure_enemy))
+#        if FILE_BARRAGE_SELF:
+#            self.file_barrage_self.write(transform.array_to_string(self.m.barrage_self))
+#        if FILE_BARRAGE_ENEMY:
+#            self.file_barrage_enemy.write(transform.array_to_string(self.m.barrage_enemy))
+#        if FILE_PROXIMITY_SELF:
+#            self.file_proximity_self.write(transform.array_to_string(self.m.proximity_self))
+#        if FILE_PROXIMITY_ENEMY:
+#            self.file_proximity_enemy.write(transform.array_to_string(self.m.proximity_enemy))
+#
+#        if FILE_PATH1_SELF:
+#            self.file_path1_self.write(model.Path.group_toBytes(self.m.path1_self))
+#        if FILE_PATH1_ENEMY:
+#            self.file_path1_enemy.write(model.Path.group_toBytes(self.m.path1_enemy))
+#
+#
+#        # Cache the trajectory so it does not get invalidated.
+#        trajectory = self.m.primal_self
+#
+#        self.servicePath(game_state, trajectory)
+#        self.deployDefence(game_state)
+#
+#        if trajectory:
+#            self.deployAttack(game_state, trajectory)
+#        if max_hazard_path:
+#            x0,y0 = max_hazard_path[0]
+#            game_state.attempt_spawn(SCRAMBLER, [x0, y0], 1)
+#            game_state.attempt_spawn(SCRAMBLER, [x0, y0], 1)
+#
+#        #self.m.readPaths(game_state)
+#
+#
 
         game_state.submit_turn()
-    
+
+    def defense_start(self, game_state):
+        gamelib.debug_write('defense_start')
+        for i in range(0, len(self.defense_start_list)):
+            level = self.defense_start_list[i]
+            unit_type = level[0]
+            for j in range(0, len(level[1])):
+                position = level[1][j]
+                if game_state.attempt_spawn(unit_type, position) == 0:
+                    # no resource available, remove any spawned unit
+                    level[1] = level[1][j:]
+                    self.defense_start_list = self.defense_start_list[i:]
+                    gamelib.debug_write(json.dumps(self.defense_start_list))
+                    return
+        # all unit successfully spawned, set defense_start_list to be empty
+        self.defense_start_list = []
+
+    def defense_basic(self, game_state):
+        pass
+
+    def defense_encryptor(self, game_state):
+        pass
+
+    def defense_enhance(self, game_state):
+        pass
+
     def servicePath(self, game_state, path):
         """
         Build encryptors to service the primary path
