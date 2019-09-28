@@ -143,11 +143,14 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         self.m.clearTrajectory()
 
+        reserve = 10
+
         if self.defense_start_list != []:
             self.defense_start(game_state)
         else:
             self.defense_conner(game_state)
-            self.defense_basic(game_state) 
+            self.defense_basic(game_state, reserve)
+            self.defense_corner_dtor(game_state, reserve)
         
         # 
         # if self.defense_basic_complete:
@@ -249,7 +252,14 @@ class AlgoStrategy(gamelib.AlgoCore):
             game_state.attempt_spawn(FILTER, [0 + i, 13])
             game_state.attempt_spawn(FILTER, [27 + i, 13])
 
-    def defense_basic(self, game_state):
+    def defense_corner_dtor(self, game_state, reserve):
+        corner_dtor_list = [[3, 11], [24, 11], [4, 10], [23, 10]]
+        for unit in corner_dtor_list:
+            if game_state.get_resource(game_state.CORES) <= reserve:
+                return
+            game_state.attempt_spawn(DESTRUCTOR, unit)
+
+    def defense_basic(self, game_state, reserve):
         gamelib.debug_write('defense_basic')
 
         destructor_list = []
@@ -291,7 +301,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                 break
 
         for unit in destructor_list:
-            if game_state.get_resource(game_state.CORES) <= 15:
+            if game_state.get_resource(game_state.CORES) <= reserve:
                 return
             game_state.attempt_spawn(FILTER, [unit[1], unit[2] + 1])
             gamelib.debug_write("F location {}, {}".format(unit[1], unit[2]))
