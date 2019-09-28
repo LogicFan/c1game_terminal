@@ -554,19 +554,14 @@ class Model:
                     second_end_path=path
 
         # number of scramblers in each path
-        nScrambler = int(max(self.bits_enemy // 10, 1))
+        nScrambler = int(max(self.bits_enemy / 7.5, 1))
         if top_end_path:
-            tuple1 = (top_end_path, nScrambler)
-            #tuple1 = (top_end_path[0], nEMP)
+            if second_end_path:
+                return (top_end_path, nScrambler), (second_end_path, nScrambler)
+            else:
+                return (top_end_path, nScrambler * 2), (None, 0)
         else:
-            tuple1 = (None, 0)
-        if second_end_path:
-            tuple2 = (second_end_path, nScrambler)
-            #tuple2 = (second_end_path[0], int(nEMP // 2))
-        else:
-            tuple2 = (None, 0)
-
-        return [tuple1, tuple2]
+            return (None, 0), (None, 0)
 
 
 

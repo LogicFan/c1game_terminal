@@ -385,7 +385,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         bits = game_state.get_resource(game_state.BITS)
 
         # Evaluate throughput using pings and emp.
-        nEMPs = int(2 + self.m.number_D_enemy * 0.25)
+        nEMPs = int(2 + self.m.number_D_enemy * 0.5)
         nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
 
         if nPings >= 5:
