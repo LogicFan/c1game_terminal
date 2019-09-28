@@ -1,0 +1,634 @@
+import transform
+import array
+import gamelib
+
+class Policy:
+
+    def __init__(self):
+        """
+        Represents policy used to evaluate a path.
+        """
+
+        self.w_dist_self  = 0.0  # Distance traveled in friendly territory
+        self.w_dist_enemy = -1   # Distance traveled in enemy territory
+        self.w_shield     = 0.1  # Shielding (Encryptor)
+        self.w_damage     = -1   # Damage received from enemy
+        self.w_pos_x      = -5   # Favour of right (+) vs left (-)
+        self.w_pos_y      = -5   # Favour of edge (+) vs center (-)
+
+        self.damage_bias  = 1.1
+
+
+class Path:
+    """
+    The Path class represents the path a attacking unit can take. After being
+    evaluated by the model, the path will have two fields:
+
+    1. damage: Distance * Destructor output
+    2. shield: Shielding provided by encryptors
+
+    """
+    def __init__(self, px, py, player):
+        self.evaluated = False
+        self.player = player
+        assert len(px) == len(py)
+        self.px = px
+        self.py = py
+
+        l = len(px)
+
+        # Integrands of the path integral.
+        self.damage_dp = array.array('f', [0] * l)
+        self.shield_dp = array.array('f', [0] * l)
+        # In units of damage * distance
+        self.damage = 0
+        self.shield = 0
+        # Distance spent in the friendly and enemy territories
+        self.dist_self = 0
+        self.dist_enemy = 0
+        self.feasibility = float("-inf")
+        self.analysed_attack = False
+
+        self.hazard_dp = array.array('f', [0] * l)
+        self.hazard = 0
+        self.analysed_defense = False
+
+        if player == 0:
+            self.deadend = (self.py[-1] < (transform.HALF_ARENA - 1))
+        else:
+            assert player == 1
+            self.deadend = (self.py[-1] >= (transform.HALF_ARENA + 1))
+
+    def __len__(self):
+        return len(self.px)
+
+    def __eq__(self, other):
+        if type(other) != Path: return False
+        if self.px != other.px: return False
+        if self.py != other.py: return False
+        if self.player != other.player: return False
+        return True
+
+    def __iter__(self):
+        a = [(self.px[i], self.py[i]) for i in range(len(self))].__iter__()
+        return a
+
+    def __getitem__(self, i):
+        return self.px[i], self.py[i]
+
+    def proximityTest(self, pos, radius):
+        """
+        Return index in this path for which the path first comes in within
+        radius "radius + 0.51" of the given position.
+
+        If returns -1, no such point exists.
+        """
+        x, y = pos
+        radiusSq = (radius + 0.51) ** 2
+        for i in range(len(self)):
+            rhoSq = (self.px[i] - x) ** 2 + (self.py[i] - y) ** 2
+            if rhoSq <= radiusSq:
+                return i
+        return -1
+
+    def integrate(self, field):
+        """
+        Expensive function! If you need complex integration schemes consider
+        doing this yourself. Integrates on a field, which is a function taking
+        a position 0 <= p < ARENA_VOL
+        """
+        result = 0
+        for pos in self:
+            p = pos2_encode(pos)
+            result += field(p)
+        return result
+
+
+    @property
+    def isEdgeReaching(self):
+        """
+        True if this path ends in an enemy edge.
+        """
+        return transform.pos2_edge_isOpposing(self[0], self[-1])
+    @property
+    def isDeadend(self):
+        """
+        True if path ends in 
+        """
+        if transform.is_lowerHalf(self.py[0]):
+            return transform.is_lowerHalf(self.py[-1] + 1)
+        else:
+            return transform.is_upperHalf(self.py[-1] - 1)
+
+
+    def toBytes(self):
+        body = (len(self)).to_bytes(4, byteorder='big')
+        body += (self.player).to_bytes(1, byteorder='big')
+        body += transform.array_to_string(self.px)
+        body += transform.array_to_string(self.py)
+        body += transform.array_to_string(self.damage_dp)
+        body += transform.array_to_string(self.shield_dp)
+        body += transform.array_to_string(self.hazard_dp)
+
+        a = array.array('f', [self.feasibility])
+        body += transform.array_to_string(a)
+        return body
+
+    @classmethod
+    def fromBytes(cls, s):
+        l = int.from_bytes(s[0:4], 'big'); s = s[4:]
+        if l == 0:
+            return None, s # A zero corresponds to none.
+        player = int.from_bytes(s[0:1], 'big'); s = s[1:]
+        px, s = transform.array_from_string(s, 'i')
+        py, s = transform.array_from_string(s, 'i')
+
+        result = cls(px = px, py = py, player=player)
+        result.damage_dp, s = transform.array_from_string(s, 'f')
+        result.shield_dp, s = transform.array_from_string(s, 'f')
+        result.hazard_dp, s = transform.array_from_string(s, 'f')
+        a, s = transform.array_from_string(s, 'f')
+        result.feasibility = a[0]
+        result.evaluated = True #(result.feasibility != float('-inf'))
+
+        return result, s
+
+    @classmethod
+    def fromGamePath(cls, path):
+        px, py = zip(*path) # Transpose
+        px = array.array('i', px)
+        py = array.array('i', py)
+        player = (0 if transform.is_lowerHalf(py[0]) else 1)
+        return cls(px = px, py = py, player = player)
+
+    @classmethod
+    def group_toBytes(cls, li: list):
+        """
+        Convert a list of paths to bytes. The list may include null.
+        """
+        body = (len(li)).to_bytes(4, byteorder='big')
+        for p in li:
+            if p:
+                assert type(p) == Path
+                body += p.toBytes()
+            else:
+                body += (0).to_bytes(4, byteorder='big')
+        return body
+
+    @classmethod
+    def group_fromBytes(clas, s):
+        n = int.from_bytes(s[0:4], 'big'); s = s[4:]
+        result = []
+        for i in range(n):
+            p, s = Path.fromBytes(s)
+            result.append(p)
+        return result, s
+
+
+UNIT_TYPE_TO_INDEX = {}
+
+class Model:
+    """
+    Usage:
+
+    1. readGameState
+       
+       Gets a game_state object and reads in all of the fields.
+
+    2. readPaths
+     
+       Determine the order 1 parameters of each path.
+
+    3. analyseAttack
+
+       Determine the order 2 parameters of each path, including
+       feasibility
+
+    4. analyseDefense
+
+       Determine the order 3 parameters of each path including hazard.
+    """
+
+    def __init__(self):
+        # Health of firewall, encryptor, destructor
+        self.stability_F = array.array('f', [0] * transform.ARENA_VOL)
+        self.stability_E = array.array('f', [0] * transform.ARENA_VOL)
+        self.stability_D = array.array('f', [0] * transform.ARENA_VOL)
+        # Pressure field obtained by path extension
+        self.pressure_self  = array.array('f', [0] * transform.ARENA_VOL)
+        self.pressure_enemy = array.array('f', [0] * transform.ARENA_VOL)
+        # Attack ranges of decryptors
+        self.barrage_self  = array.array('f', [0] * transform.ARENA_VOL)
+        self.barrage_enemy = array.array('f', [0] * transform.ARENA_VOL)
+
+        # Stores distance from current position to nearest unit, up to 4.
+        # +inf indicates dist > 4
+        self.proximity_self  = array.array('f',
+                [float(0)] * transform.ARENA_VOL)
+        self.proximity_enemy = array.array('f',
+                [float(0)] * transform.ARENA_VOL)
+
+        self.li_encryptors_self = []
+        self.li_encryptors_enemy = []
+
+        self.flag_pathOutdated = False
+        self.resetPaths()
+
+        # Primary attack trajectories
+        self.primal_self = None
+        self.primal_enemy = None
+        # Set of prohibited locations as determined by the primary trajectory.
+        self.prohibited_loc = set()
+
+        # Persistent data
+        self.policy_self = Policy()
+        self.policy_enemy = Policy()
+
+        self.bits_self = 0
+        self.bits_enemy = 0
+        self.cores_self = 0
+        self.cores_enemy = 0
+
+    def resetPaths(self):
+        if not self.flag_pathOutdated:
+            self.path1_self = []
+            self.path1_enemy = []
+            # If this is true, the paths are calculated using a historic version
+            # of stability fields.
+            self.flag_pathOutdated = True
+
+    def evaluatePathThroughput(self, path, unittype: int, n):
+        """
+        If we send n units down the given path, what is the remaining number
+        of units by the type the units reach the end. Assume that the units
+        have no attack capabilities
+
+        If the base health of a unit is h and the number of units is m, the
+        remaining total HP when the units reach the target is
+
+            (h + shield) * m - damage / speed
+
+        The speed and health are given, so the number of units required is
+        
+            m = damage / speed / (h+shield)
+
+        Note that we generally don't mix units since they travel at different
+        speeds.
+        """
+        assert path.analysed_attack
+        speed = self.SPEED[unittype]
+        assert speed > 0
+
+        stab = self.STABILITY[unittype] + path.shield
+        
+        return n - (self.policy_self.damage_bias * path.damage / speed / stab) \
+                - (self.policy_self.w_dist_enemy * path.dist_enemy / speed / stab)
+
+
+
+
+    
+    ### State Evaluation Functions ###
+
+    def _evaluatePath(self, path):
+        """
+        Populate the damage field of the path.
+        """
+        if not path:
+            # Path starts from a occupied unit.
+            return float('-inf')
+
+        path.evaluated = True
+        player = 0 if transform.is_lowerHalf(path.py[0]) else 1
+
+        path.feasibility = 0.0
+        path.shield = 0.0
+        path.damage = 0.0
+
+        if path.isDeadend:
+            path.feasibility = float('-inf')
+            return path.feasibility
+
+        # Get list of encryptors
+        if player == 0:
+            encs = self.li_encryptors_self.copy()
+        else:
+            encs = self.li_encryptors_enemy.copy()
+        n = len(path)
+        for i in range(n):
+            x = path.px[i]
+            y = path.py[i]
+
+            # Filter the encs list
+            ne = len(encs)
+            encs = [e for e in encs if \
+                transform.distance2(e, (x,y)) >= \
+                    self.RANGE[UNIT_TYPE_TO_INDEX[ENCRYPTOR]] + 0.51]
+            shield = (ne - len(encs)) * self.ENCRYPTOR_SHIELD
+            path.shield_dp[i] = shield
+            path.shield += shield
+
+            p = transform.pos2_encode((x,y))
+            # Enemy destructor
+            if player == 0: damage = self.barrage_enemy[p]
+            else:           damage = self.barrage_self[p]
+            path.damage_dp[i] = damage
+            path.damage += damage
+
+            if transform.is_lowerHalf(y) == (player == 0):
+                path.dist_self += 1
+            else:
+                path.dist_enemy += 1
+
+        x_normal, y_normal = path.px[0], path.py[0]
+        if player == 0:
+            policy = self.policy_self
+        else:
+            policy = self.policy_enemy
+            x_normal, y_normal = transform.pos2_flip((x_normal, y_normal))
+        x_normal /= (transform.ARENA_SIZE - 1)
+        y_normal /= (transform.HALF_ARENA - 1)
+        path.feasibility = policy.w_dist_self  * path.dist_self \
+                         + policy.w_dist_enemy * path.dist_enemy \
+                         + policy.w_shield     * path.shield \
+                         + policy.w_damage     * path.damage \
+                         + policy.w_pos_x      * x_normal \
+                         + policy.w_pos_y      * y_normal
+        return path.feasibility
+
+    def analyseAttack(self):
+        # Find optimal path for self and enemy
+        p_self = None
+        f_self = float('-inf')
+        for path in self.path1_self:
+            if not path: continue
+
+            f = self._evaluatePath(path)
+            path.analysed_attack = True
+            for [x2,y2] in path:
+                p2 = transform.pos2_encode((x2, y2))
+                self.pressure_self[p2] += f
+            if f > f_self:
+                #gamelib.debug_write("New max: {} at {}".format(f, path.px[0]))
+                f_self = f
+                p_self = path
+
+        p_enemy = None
+        f_enemy = float('-inf')
+        for path in self.path1_enemy:
+            if not path: continue
+
+            f = self._evaluatePath(path)
+            path.analysed_attack = True
+            for [x2,y2] in path:
+                p2 = transform.pos2_encode((x2, y2))
+                self.pressure_enemy[p2] += f
+            if f > f_enemy:
+                f_enemy = f
+                p_enemy = path
+        self.primal_self = p_self
+        self.primal_enemy = p_enemy
+
+        if not self.primal_self:
+            gamelib.debug_write('[Model] No primary trajectory is found!')
+        else:
+            gamelib.debug_write('[Model] Primal Path start at [{}, {}]'.format(
+                self.primal_self.px[0], self.primal_self.py[0]))
+
+        n = len(self.primal_self)
+        for i in range(n):
+            x = self.primal_self.px[i]
+            y = self.primal_self.py[i]
+            if transform.is_lowerHalf(y):
+                self.prohibited_loc.add((x,y))
+
+    def analyseReactive(self):
+        max_hazard_path = None
+        max_hazard = float('-inf')
+        for path in self.path1_self:
+            if not path: continue
+
+            path.hazard = 0
+            for i in range(len(path)):
+                x2, y2 = path[i]
+                p = transform.pos2_encode((x2, y2))
+
+                stability = self.stability_F[p] \
+                        + self.stability_F[p] \
+                        + self.stability_D[p]
+                path.hazard_dp[i] = self.pressure_enemy[p] - stability
+                path.hazard += path.hazard_dp[i]
+            if path.hazard > max_hazard:
+                max_hazard_path = path
+                max_hazard = path.hazard
+        return max_hazard_path
+
+
+
+
+    ### Game State Input ###
+
+
+
+    def loadConfig(self, config):
+        global FILTER, ENCRYPTOR, DESTRUCTOR, PING, EMP, SCRAMBLER
+        FILTER     = config["unitInformation"][0]["shorthand"]
+        ENCRYPTOR  = config["unitInformation"][1]["shorthand"]
+        DESTRUCTOR = config["unitInformation"][2]["shorthand"]
+        PING       = config["unitInformation"][3]["shorthand"]
+        EMP        = config["unitInformation"][4]["shorthand"]
+        SCRAMBLER  = config["unitInformation"][5]["shorthand"]
+
+        UNIT_TYPE_TO_INDEX[FILTER]     = 0
+        UNIT_TYPE_TO_INDEX[ENCRYPTOR]  = 1
+        UNIT_TYPE_TO_INDEX[DESTRUCTOR] = 2
+        UNIT_TYPE_TO_INDEX[PING]       = 3
+        UNIT_TYPE_TO_INDEX[EMP]        = 4
+        UNIT_TYPE_TO_INDEX[SCRAMBLER]  = 5
+
+        self.COST = [0] * 6
+        self.RANGE = [0] * 6
+        self.STABILITY = [0] * 6
+        self.SPEED = [0] * 6
+
+        for idx in [FILTER,ENCRYPTOR,DESTRUCTOR,PING,EMP,SCRAMBLER]:
+            i = UNIT_TYPE_TO_INDEX[idx]
+            self.COST[i]      = config["unitInformation"][i]["cost"]
+            self.STABILITY[i] = config["unitInformation"][i]["stability"]
+            self.RANGE[i]     = config["unitInformation"][i]["range"]
+        for idx in [PING,EMP,SCRAMBLER]:
+            i = UNIT_TYPE_TO_INDEX[idx]
+            self.SPEED[i] = config["unitInformation"][i]["speed"]
+
+
+        self.ENCRYPTOR_SHIELD = config["unitInformation"][ \
+                UNIT_TYPE_TO_INDEX[ENCRYPTOR]]["shieldAmount"]
+
+        # Stores tuples (x, y, r) of points from origin with distance r.
+        self.CIRCLE = transform.pos2_circle(self.RANGE[UNIT_TYPE_TO_INDEX[EMP]])
+
+
+
+    def readGameState(self, game_state):
+        self.bits_self = game_state.get_resource(game_state.BITS, 0)
+        self.bits_enemy = game_state.get_resource(game_state.BITS, 1)
+        self.cores_self = game_state.get_resource(game_state.CORES, 0)
+        self.cores_enemy = game_state.get_resource(game_state.CORES, 1)
+
+        # Primary attack trajectories
+        self.primal_self = None
+        self.primal_enemy = None
+        # Set of prohibited locations as determined by the primary trajectory.
+        self.prohibited_loc = set()
+        # Create units map
+        for p in range(transform.ARENA_VOL):
+            self.stability_F[p] = 0
+            self.stability_E[p] = 0
+            self.stability_D[p] = 0
+            self.pressure_self[p] = 0
+            self.pressure_enemy[p] = 0
+            self.barrage_self[p] = 0
+            self.barrage_enemy[p] = 0
+            self.proximity_self[p] = float('+inf')
+            self.proximity_enemy[p] = float('+inf')
+
+            x,y = transform.pos2_decode(p)
+
+            units = game_state.game_map[x, y]
+            for unit in units:
+                stability = unit.stability
+                if not unit.stationary: continue
+
+                
+                self._add_stationary_unit(game_state, [x,y])
+                if unit.unit_type == FILTER:
+                    self.stability_F[p] = stability
+                elif unit.unit_type == ENCRYPTOR:
+                    self.stability_E[p] = stability
+                elif unit.unit_type == DESTRUCTOR:
+                    self._add_destructor_contribution(game_state, [x,y])
+                    self.stability_D[p] = stability
+
+
+    def readPaths(self, game_state):
+
+        self.resetPaths()
+
+        # Create the pressure map.
+        for p in range(transform.ARENA_SIZE):
+            # Player 1 perspective
+            x,y = transform.pos2_edge_decode(p)
+            if not game_state.contains_stationary_unit([x,y]):
+                # Determine the target edge from x,y.
+                if transform.is_lowerHalf(p):
+                    edge = game_state.game_map.TOP_RIGHT
+                else:
+                    assert transform.is_upperHalf(p)
+                    edge = game_state.game_map.TOP_LEFT
+
+                path = game_state.find_path_to_edge([x,y], edge)
+                self.path1_self.append(Path.fromGamePath(path))
+            else:
+                self.path1_self.append(None)
+
+            # Player 2 persepctive
+            x,y = transform.pos2_flip((x,y))
+            if not game_state.contains_stationary_unit([x,y]):
+                # Reminder: When p is lower half on the top edge, it
+                # corresponds to TOP_RIGHT!
+                if transform.is_lowerHalf(p):
+                    edge = game_state.game_map.BOTTOM_LEFT
+                else:
+                    assert transform.is_upperHalf(p)
+                    edge = game_state.game_map.BOTTOM_RIGHT
+                path = game_state.find_path_to_edge([x,y], edge)
+                self.path1_enemy.append(Path.fromGamePath(path))
+            else:
+                self.path1_enemy.append(None)
+
+        # Check invariants
+        assert len(self.path1_self) == transform.ARENA_SIZE
+        assert len(self.path1_enemy) == transform.ARENA_SIZE
+        self.flag_pathOutdated = False
+
+    def _add_stationary_unit(self, game_state: gamelib.GameState, pos):
+        x, y = pos
+        if transform.is_lowerHalf(y):
+            for (i, j, r) in self.CIRCLE:
+                if not transform.pos2_inbound((x+i,y+j)): continue
+                p = transform.pos2_encode((x+i,y+j))
+
+                if r < self.proximity_self[p]:
+                    self.proximity_self[p] = r
+        else:
+            for (i, j, r) in self.CIRCLE:
+                if not transform.pos2_inbound((x+i,y+j)): continue
+                p = transform.pos2_encode((x+i,y+j))
+
+                if r < self.proximity_enemy[p]:
+                    self.proximity_enemy[p] = r
+
+    def _add_destructor_contribution(self, game_state: gamelib.GameState, pos):
+        li = game_state.game_map.get_locations_in_range(
+                pos, self.RANGE[UNIT_TYPE_TO_INDEX[DESTRUCTOR]])
+        if transform.is_lowerHalf(pos[1]):
+            for [x, y] in li:
+                p = transform.pos2_encode((x,y))
+                self.barrage_self[p] += 1
+        else:
+            for [x, y] in li:
+                p = transform.pos2_encode((x,y))
+                self.barrage_enemy[p] += 1
+
+
+if __name__ == '__main__':
+    def test_equal(a, b):
+        if a != b:
+                print("Test failed: {} != {}".format(a,b))
+    def test_nequal(a, b):
+        if a == b:
+                print("Test failed: {} == {}".format(a,b))
+
+    # Path IO
+
+    px = array.array('i', [1,2,3])
+    py = array.array('i', [7,5,6])
+    path1 = Path(px, py, player=1)
+    path2 = Path(px, py, player=1)
+    s = path1.toBytes()
+
+    path1_out, s = Path.fromBytes(s)
+    test_equal(path1_out, path2)
+    test_equal(len(s), 0)
+
+    px = array.array('i', [1,2,3])
+    py = array.array('i', [7,5,6])
+    path1 = Path(px, py, player=0)
+    path2 = Path(px, py, player=1)
+    s = path1.toBytes()
+
+    path1_out, s = Path.fromBytes(s)
+    test_nequal(path1_out, path2)
+    test_equal(len(s), 0)
+
+    # Path group IO
+    px = array.array('i', [1,2,3])
+    py = array.array('i', [7,5,6])
+    path1 = Path(px, py, player=1)
+    px = array.array('i', [7,8])
+    py = array.array('i', [7,9])
+    path2 = Path(px, py, player=0)
+
+    g = [path1, None, path2]
+    s = Path.group_toBytes(g)
+    g_out, s = Path.group_fromBytes(s)
+    test_equal(g, g_out)
+
+    print("=== Ignore the following errors ===")
+    test_equal("Test1", "Test2")
+    print("=== Assertion System test complete ===")
+
+    print("Test Complete. Exit.")
+
+
+
