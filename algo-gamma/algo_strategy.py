@@ -163,7 +163,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         else:
             self.defense_conner(game_state)
             self.defense_basic(game_state, reserve)
-            self.defense_corner_dtor(game_state, reserve)
+            # self.defense_corner_dtor(game_state, reserve)
         
         # 
         # if self.defense_basic_complete:
@@ -277,6 +277,8 @@ class AlgoStrategy(gamelib.AlgoCore):
                 game_state.attempt_spawn(ENCRYPTOR, [15 - i, i])
             for i in range(3, 14):
                 game_state.attempt_spawn(ENCRYPTOR, [16 - i, i])
+            for i in range(0, 11):
+                game_state.attempt_spawn(DESTRUCTOR, [27 - i, 13 - i])
             
             emp_num = int((game_state.get_resource(game_state.BITS) * 0.3) // self.m.COST[UNIT_TYPE_TO_INDEX[EMP]])
             ping_num = int((game_state.get_resource(game_state.BITS) * 0.7) // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
