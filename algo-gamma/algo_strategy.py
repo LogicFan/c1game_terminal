@@ -353,24 +353,23 @@ class AlgoStrategy(gamelib.AlgoCore):
         bits = game_state.get_resource(game_state.BITS)
 
         # Evaluate throughput using pings and emp.
-        nPings = int(bits // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
-        nEMPs  = int(bits // self.m.COST[UNIT_TYPE_TO_INDEX[EMP]])
+        nEMPs = 2
+        nPings = int((bits - self.m.COST[UNIT_TYPE_TO_INDEX[EMP]] * nEMPs) // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
 
-        if nEMPs >= 5:
+        if nPings >= 5:
             game_state.attempt_spawn(EMP, [x0, y0], int(nEMPs))
+            game_state.attempt_spawn(PING, [x0, y0], int(nPings))
             return True
         else:
             return False
 
         #nPings_survive = self.m.evaluatePathThroughput(trajectory,
         #    UNIT_TYPE_TO_INDEX[PING], nPings)
-        nEMP_survive = self.m.evaluatePathThroughput(trajectory,
-            UNIT_TYPE_TO_INDEX[EMP], nEMPs)
+        #nEMP_survive = self.m.evaluatePathThroughput(trajectory,
+        #    UNIT_TYPE_TO_INDEX[EMP], nEMPs)
 
-        gamelib.debug_write('Survival rate: {}'.format(nEMP_survive))
+        #gamelib.debug_write('Survival rate: {}'.format(nEMP_survive))
 
-        #elif nPings_survive >= 4:
-        #    game_state.attempt_spawn(PING, [x0, y0], int(nPings))
 
 
     def deployDefenseInitial(self, game_state):
