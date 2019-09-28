@@ -1,95 +1,98 @@
-# Dirichlet, A Terminal AI
+# Starter Algo
 
-## Build and Training
-
-A symbolic link must be created to `C1GamesStarterKit-master`, via the
-command
-```
-$ ln -s <C1GamesStarterKit-master-path> kit
-```
-
-To deploy the algorithm for production:
-```
-python3 main.py deploy
-```
-
-### Files of interest
+## File Overview
 
 ```
-Dirichlet
- |
- |- main.py # Deployment and testing
- |- trainer.py # Training
- |- algo # Main algorithms folder
- |  |
- |  |- model.py     # Contains the keras model
- |  |- transform.py # Position encoding
- |  |- visual.py    # State Visualisation
- |  |- run.sh       # Production run script
- |  |- run-trainee.sh # Training run script (p1)
- |  |- run-trainer.sh # Trainer run script (p1)
- |
- |- algo-trainers # Training algorithms
-    |
-    |  # A randomised algorithm
-    |- random.agent.py
-    |- random.run.{ps1,sh}
+starter-algo
+ │
+ ├──gamelib
+ │   ├──__init__.py
+ │   ├──advanced_game_state.py
+ │   ├──algocore.py
+ │   ├──game_map.py
+ │   ├──game_state.py
+ │   ├──navigation.py
+ │   ├──tests.py
+ │   ├──unit.py
+ │   └──util.py
+ │ 
+ ├──algo_strategy.py
+ ├──README.md
+ ├──run.ps1
+ └──run.sh
 ```
 
+### Creating an Algo
 
-## AI Architecture
+To create an algo, simply modify the `algo_strategy.py` file.
 
-### Preprocessing
+### `algo_strategy.py`
 
-Since the game board is a rhombus, it has to be rotated into a square before we
-can feed the game state to the neural network. Let N be the edge length of the
-rhombus. 
+This file contains the `AlgoStrategy` class which you should modify to implement
+your strategy.
 
-### Neural Network Specification
+At a minimum you must implement the `on_turn` method which handles responding to
+the game state for each turn. Refer to the `starter_strategy` method for inspiration.
 
-Since the game is close to full information, we do not need to remember
-the game state from previous states (as opposed to games like Dota 2).
+If your algo requires initialization then you should also implement the
+`on_game_start` method and do any inital setup there.
 
-The inputs are
+### `run.sh`
 
-| Shape   | Range   | Source                    |
-| ------- | ------- | ------------------------- |
-| Board   | [0,1]   | Filter Health (S&E)       |
-| Board   | [0,1]   | Destructor Heblth (S&E)   |
-| Board   | [0,1]   | Encryptor Health (S&E)    |
-| Board   | {0,1}   | Filter Unit (S&E)         |
-| Board   | {0,1}   | Destructor Unit (S&E)     |
-| Board   | {0,1}   | Encryptor Unit (S&E)      |
-| 1       | [0,1]   | Self Health               |
-| 1       | [0,->]  | Self Bits/5               |
-| 1       | [0,->]  | Self Cores/5              |
-| 1       | [0,1]   | Enemy Health              |
-| 1       | [0,->]  | Enemy Bits/5              |
-| 1       | [0,->]  | Enemy Cores/5             |
-| 1       | [0,->]  | Turn number/10            |
+A script that contains logic to invoke your code. You shouldn't need to change
+this unless you change file structure or require a more customized process
+startup.
 
-The outputs are
+### `run.ps1`
 
-| Shape   | Range  | Description                    |
-| ------- | ------ | ------------------------------ |
-| Tri     | [0,1]  | Deletion Policy                |
-| Tri     | [0,1]  | Placement of Filter            |
-| Tri     | [0,1]  | Placement of Destructor        |
-| Tri     | [0,1]  | Placement of Encryptor         |
-| Edge    | [0,->]  | Placement of Ping              |
-| Edge    | [0,->]  | Placement of EMP               |
-| Edge    | [0,->]  | Placement of Scrambler         |
+A script that contains logic to invoke your code. You shouldn't need to change
+this unless you change file structure or require a more customized process
+startup.
 
-Note: The Action Probability Vector is a distribution from which we sample the
-next move. If a action is not feasible, it is not sampled, with the exception
-of deleting units.
-* End Turn
-* Delete Unit
-* Place Filter
-* Place Destructor
-* Place Encryptor
-* Place Ping
-* Place EMP
-* Place Scrambler
+### `gamelib/__init__.py`
 
+This file tells python to treat `gamelib` as a bundled python module. This
+library of functions and classes is intended to simplify development by
+handling tedious tasks such as communication with the game engine, summarizing
+the latest turn, and estimating paths based on the latest board state.
 
+### `gamelib/advanced_game_state.py`
+
+This module contains the `AdvancedGameState` class. This file is a version of gamestate with access to a few more advanced functions.
+
+### `gamelib/algocore.py`
+
+This file contains code that handles the communication between your algo and the
+core game logic module. You shouldn't need to change this directly. Feel free to 
+just overwrite the core methods that you would like to behave differently. 
+
+### `gamelib/game_map.py`
+
+This module contains the `GameMap` class which is used to parse the game state
+and provide functions for querying it. 
+
+### `gamelib/navigation.py`
+
+Functions and classes used to implement pathfinding.
+
+### `gamelib/tests.py`
+
+Unit tests. You can write your own if you would like, and can run them using
+the following command:
+
+    python3 -m unittest discover
+
+### `gamelib/unit.py`
+
+This module contains the `GameUnit` class which holds information about a Unit.
+
+### `gamelib/util.py`
+
+Helper functions and values that do not yet have a better place to live.
+
+## Strategy Overview
+
+The starter strategy is designed to highlight a few common `GameMap` functions
+and give the user a functioning example to work with. It's gameplan is to 
+draw the C1 logo, place destructors in its corners, and randomly spawn encryptors
+and units.
