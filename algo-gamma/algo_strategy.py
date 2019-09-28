@@ -142,6 +142,17 @@ class AlgoStrategy(gamelib.AlgoCore):
         game_state = gamelib.GameState(self.config, turn_state)
         gamelib.debug_write('Gamma version 1.3, turn {}'.format(game_state.turn_number))
 
+        ##########################################################
+        if (game_state.my_health <= 8) and (game_state.get_resource(game_state.BITS) >= 15):
+            self.last_attack(game_state)
+            game_state.submit_turn()
+            return
+
+        if self.last_attack_stage == 1:
+            self.last_attack(game_state)
+            game_state.submit_turn()
+            return
+
         self.m.clearTrajectory()
 
         ne, np = self.numberEMPPing(game_state)
@@ -254,8 +265,24 @@ class AlgoStrategy(gamelib.AlgoCore):
     def last_attack(self, game_state):
         if self.last_attack_stage == 0:
             for y in range(0, 14):
-                for x in range(0, 0):
-                    pass 
+                for x in range(13 - y, 15 + y):
+                    game_state.attempt_remove([x, y])
+            self.last_attack_stage = 1
+            return
+
+        if self.last_attack_stage == 1:
+            for loc in [[15, 2], [14, 2]]:
+                game_state.attempt_spawn(ENCRYPTOR, loc)
+            for i in range(2, 14):
+                game_state.attempt_spawn(ENCRYPTOR, [15 - i, i])
+            for i in range(3, 14):
+                game_state.attempt_spawn(ENCRYPTOR, [16 - i, i])
+            
+            emp_num = int((game_state.get_resource(game_state.BITS) * 0.3) // self.m.COST[UNIT_TYPE_TO_INDEX[EMP]])
+            ping_num = int((game_state.get_resource(game_state.BITS) * 0.7) // self.m.COST[UNIT_TYPE_TO_INDEX[PING]])
+            game_state.attempt_spawn(EMP, [14, 0], emp_num)
+            game_state.attempt_spawn(PING, [15, 1], ping_num)
+            return
 
     def defense_start(self, game_state):
         gamelib.debug_write('defense_start')
