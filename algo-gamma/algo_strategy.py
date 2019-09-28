@@ -121,6 +121,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         # record any non-filter unit (remove or destuctor)
         self.defense_basic_dict = {} 
+        self.defense_basic_complete = True
 
     def on_turn(self, turn_state):
         """
@@ -131,12 +132,17 @@ class AlgoStrategy(gamelib.AlgoCore):
         game engine.
         """
         game_state = gamelib.GameState(self.config, turn_state)
-        gamelib.debug_write('Gamma version 1.1, turn {}'.format(game_state.turn_number))
+        gamelib.debug_write('Gamma version 1.3, turn {}'.format(game_state.turn_number))
 
         if self.defense_start_list != []:
             self.defense_start(game_state)
-        
+
+        # assume it is complete
+        self.defense_basic_complete = True        
         self.defense_basic(game_state)
+        
+        if self.defense_basic_complete:
+            self.defense_encryptor(game_state)
 
 #
 #        
@@ -215,16 +221,16 @@ class AlgoStrategy(gamelib.AlgoCore):
                     # no resource available, remove any spawned unit
                     level[1] = level[1][j:]
                     self.defense_start_list = self.defense_start_list[i:]
-                    gamelib.debug_write(json.dumps(self.defense_start_list))
                     return
         # all unit successfully spawned, set defense_start_list to be empty
         self.defense_start_list = []
 
     def defense_basic(self, game_state):
+        gamelib.debug_write('defense_basic')
         game_map = game_state.game_map
 
         def add_destructor(x, y):
-            if game_map[x, 13] != []:
+            if game_map[x, y] != []:
             # location is not empty
                 return
             
@@ -235,27 +241,24 @@ class AlgoStrategy(gamelib.AlgoCore):
                 if not "D" in self.defense_basic_dict[(x, y)]:
                     # add desctructor info to dict
                     self.defense_basic_dict[(x, y)].append("D")
-            game_state.attempt_spawn(DESTRUCTOR, [x, y])
-
-        for i in {0, 27, 1, 26, 2, 25}:
-            add_destructor(i, 13)
+            gamelib.debug_write('location {}, {}'.format(x, y))
+            if game_state.attempt_spawn(DESTRUCTOR, [x, y]) == 0:
+                self.defense_basic_complete = False
         
+        for i in [0, 27, 1, 26, 2, 25]:
+            add_destructor(i, 13)
         for i in range(4):
             add_destructor(3 + i, 12 - i)
             add_destructor(24 - i, 12 - i)
-        
         for i in range(7):
             add_destructor(7 + i, 9)
             add_destructor(20 - i, 9)
 
     def defense_encryptor(self, game_state):
-        num = 0
         for i in range(0, 4):
-            num += game_state.attempt_spawn(ENCRYPTOR, [7 + i, 8 - i])
-            if (num > 2):
+            if game_state.attempt_spawn(ENCRYPTOR, [7 + i, 8 - i]) == 1:
                 return
-            num += game_state.attempt_spawn(ENCRYPTOR, [20 - i, 8 - i])
-            if (num > 2):
+            if game_state.attempt_spawn(ENCRYPTOR, [20 - i, 8 - i]) == 1:
                 return
 
     def defense_enhance(self, game_state):
